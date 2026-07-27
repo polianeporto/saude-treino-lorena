@@ -34,42 +34,50 @@ now_dt = datetime.datetime.now()
 now = now_dt.strftime("%d/%m/%Y às %H:%Mh")
 hora_atual = now_dt.hour  # hora local (Brasília via GitHub Actions = UTC-3... ajustar se necessário)
 
+def safe_get(d, key, default):
+    """Como d.get(key, default), mas também troca None por default
+    (o Garmin às vezes retorna a chave presente com valor null, não ausente)."""
+    v = d.get(key, default)
+    return default if v is None else v
+
 # Busca dados
 stats = client.get_stats(today)
 sleep_raw = client.get_sleep_data(today)
-sleep = sleep_raw.get("dailySleepDTO", {})
-scores = sleep.get("sleepScores", {})
+sleep = sleep_raw.get("dailySleepDTO", {}) or {}
+scores = sleep.get("sleepScores", {}) or {}
 
 try:
     hrv = client.get_hrv_data(today)
-    hrv_val = hrv.get("hrvSummary", {}).get("lastNightAvg", "--")
-    hrv_status = hrv.get("hrvSummary", {}).get("status", "--")
+    hrv_summary = (hrv or {}).get("hrvSummary", {}) or {}
+    hrv_val = safe_get(hrv_summary, "lastNightAvg", "--")
+    hrv_status = safe_get(hrv_summary, "status", "--")
 except Exception:
     hrv_val = "--"
     hrv_status = "--"
 
 # Extrai valores
-body_battery = stats.get("bodyBatteryMostRecentValue", "--")
-bb_max = stats.get("bodyBatteryHighestValue", "--")
-bb_min = stats.get("bodyBatteryLowestValue", "--")
-steps = stats.get("totalSteps", 0)
-steps_goal = stats.get("dailyStepGoal", 9000)
+body_battery = safe_get(stats, "bodyBatteryMostRecentValue", "--")
+bb_max = safe_get(stats, "bodyBatteryHighestValue", "--")
+bb_min = safe_get(stats, "bodyBatteryLowestValue", "--")
+steps = safe_get(stats, "totalSteps", 0)
+steps_goal = safe_get(stats, "dailyStepGoal", 9000)
 steps_pct = round((steps / steps_goal) * 100) if steps_goal else 0
-fc_repouso = stats.get("restingHeartRate", "--")
-estresse = stats.get("averageStressLevel", "--")
-spo2_min = stats.get("lowestSpo2", "--")
-spo2_media = stats.get("averageSpo2", "--")
-calorias = stats.get("activeKilocalories", "--")
+fc_repouso = safe_get(stats, "restingHeartRate", "--")
+estresse = safe_get(stats, "averageStressLevel", "--")
+spo2_min = safe_get(stats, "lowestSpo2", "--")
+spo2_media = safe_get(stats, "averageSpo2", "--")
+calorias = safe_get(stats, "activeKilocalories", "--")
 
-sono_h = round(sleep.get("sleepTimeSeconds", 0) / 3600, 1)
-sono_score = scores.get("overall", {}).get("value", "--")
-sono_qualidade = scores.get("overall", {}).get("qualifierKey", "--")
-sono_profundo = round(sleep.get("deepSleepSeconds", 0) / 60)
-sono_rem = round(sleep.get("remSleepSeconds", 0) / 60)
-sono_leve = round(sleep.get("lightSleepSeconds", 0) / 60)
-acordou = sleep.get("awakeCount", "--")
-spo2_sono = sleep.get("averageSpO2Value", "--")
-spo2_sono_min = sleep.get("lowestSpO2Value", "--")
+sono_h = round(safe_get(sleep, "sleepTimeSeconds", 0) / 3600, 1)
+overall_score = scores.get("overall", {}) or {}
+sono_score = safe_get(overall_score, "value", "--")
+sono_qualidade = safe_get(overall_score, "qualifierKey", "--")
+sono_profundo = round(safe_get(sleep, "deepSleepSeconds", 0) / 60)
+sono_rem = round(safe_get(sleep, "remSleepSeconds", 0) / 60)
+sono_leve = round(safe_get(sleep, "lightSleepSeconds", 0) / 60)
+acordou = safe_get(sleep, "awakeCount", "--")
+spo2_sono = safe_get(sleep, "averageSpO2Value", "--")
+spo2_sono_min = safe_get(sleep, "lowestSpO2Value", "--")
 
 # Determina feedbacks automáticos
 def bb_feedback(val):
@@ -127,7 +135,7 @@ else:
     orientacao_texto = "Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino."
 
 # Frase do Claude sobre o sono
-rem_pct = round((sleep.get("remSleepSeconds", 0) / max(sleep.get("sleepTimeSeconds", 1), 1)) * 100)
+rem_pct = round((safe_get(sleep, "remSleepSeconds", 0) / max(safe_get(sleep, "sleepTimeSeconds", 1), 1)) * 100)
 
 if sono_score != "--" and sono_score >= 80:
     frase_sono = f"Boa noite de sono! Você dormiu {sono_h}h com score {sono_score} — seu corpo recuperou bem. Aproveite o dia."
