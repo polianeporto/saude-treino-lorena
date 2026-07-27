@@ -5,6 +5,7 @@ Roda via GitHub Actions a cada hora.
 Usa token OAuth salvo (GARMIN_TOKENS) para evitar bloqueio de IP.
 """
 import os
+import re
 import sys
 import json
 import datetime
@@ -33,6 +34,137 @@ today = datetime.date.today().isoformat()
 now_dt = datetime.datetime.now()
 now = now_dt.strftime("%d/%m/%Y às %H:%Mh")
 hora_atual = now_dt.hour  # hora local (Brasília via GitHub Actions = UTC-3... ajustar se necessário)
+
+# ── Envio dos treinos para o Garmin Connect ────────────────────────────────
+# Protocolo real (Coach Allan Vieira / AV Team). Cada item: (exercício, séries, repetições, descanso)
+TREINOS_EXERCICIOS = {
+    "A": [
+        ("Cadeira extensora (pico de contração 2s + drop-set na última série)", "4X", "15/10/10/10", "1M"),
+        ("Leg press 45° (priorizar boa amplitude)", "3X", "12 A 15", "2M"),
+        ("Agachamento no Hack (descer até o talo)", "4X", "15/10/10/10", "1M"),
+        ("Cadeira flexora (pico de contração 3s nas 8 primeiras reps)", "4X", "12 A 15", "1M"),
+        ("Mesa flexora (drop-set)", "2X", "10.10.10", "2M"),
+        ("Cadeira adutora", "4X", "12 A 15", "1M"),
+    ],
+    "B": [
+        ("Desenvolvimento na máquina", "4X", "12 A 15", "40S"),
+        ("Elevação lateral com halteres", "6X", "15", "30S"),
+        ("Crucifixo inverso no voador, peg. pronada", "3X", "12 A 15", "40S"),
+        ("Remada baixa peg. pronada aberta", "4X", "15/12/10/10", "1M"),
+        ("Remada baixa peg. neutra com triângulo", "3X", "12 A 15", "40S"),
+        ("Pulley frente peg. pronada aberta", "3X", "12 A 15", "40S"),
+        ("Face pull com a corda", "4X", "12 A 15", "40S"),
+    ],
+    "C": [
+        ("Cadeira abdutora em 45° (ativação)", "5X", "15", "1M"),
+        ("Abdução de quadril cruzado no cross over", "4X", "12", "1M"),
+        ("Elevação pélvica", "5X", "15/15/10/10/10", "2M"),
+        ("Terra sumô (carga máx)", "4X", "15/10/10/10", "2M"),
+        ("Afundo no Smith (descer até o talo)", "3X", "12", "2M"),
+        ("Stiff com os pés abduzidos", "4X", "15/10/10/10", "2M"),
+    ],
+}
+NOMES_TREINO = {
+    "A": "Treino A - MMII Coxa completa",
+    "B": "Treino B - MMSS Superior completo",
+    "C": "Treino C - MMII Gluteo e posterior",
+}
+
+
+def _parse_int(texto, default):
+    m = re.search(r"\d+", str(texto))
+    return int(m.group()) if m else default
+
+
+def _parse_descanso_segundos(texto):
+    t = str(texto).upper().strip()
+    n = _parse_int(t, 60)
+    return n * 60 if "M" in t else n
+
+
+def build_strength_workout(nome_treino, exercicios):
+    """Monta o JSON de um treino de força no formato aceito pela API do Garmin Connect."""
+    counter = [1]
+
+    def nxt():
+        v = counter[0]
+        counter[0] += 1
+        return v
+
+    steps = []
+    for ex_nome, series_txt, reps_txt, descanso_txt in exercicios:
+        series = _parse_int(series_txt, 1)
+        reps_alvo = _parse_int(reps_txt, 12)
+        descanso_seg = _parse_descanso_segundos(descanso_txt)
+        repeat_order = nxt()
+        main_step = {
+            "type": "ExecutableStepDTO",
+            "stepOrder": nxt(),
+            "stepType": {"stepTypeId": 8, "stepTypeKey": "main", "displayOrder": 8},
+            "endCondition": {"conditionTypeId": 10, "conditionTypeKey": "reps", "displayOrder": 10, "displayable": True},
+            "endConditionValue": reps_alvo,
+            "targetType": {"workoutTargetTypeId": 1, "workoutTargetTypeKey": "no.target", "displayOrder": 1},
+            "description": f"{ex_nome} - {series_txt} x {reps_txt}",
+        }
+        rest_step = {
+            "type": "ExecutableStepDTO",
+            "stepOrder": nxt(),
+            "stepType": {"stepTypeId": 5, "stepTypeKey": "rest", "displayOrder": 5},
+            "endCondition": {"conditionTypeId": 8, "conditionTypeKey": "fixed.rest", "displayOrder": 8, "displayable": True},
+            "endConditionValue": descanso_seg,
+            "targetType": {"workoutTargetTypeId": 1, "workoutTargetTypeKey": "no.target", "displayOrder": 1},
+        }
+        steps.append({
+            "type": "RepeatGroupDTO",
+            "stepOrder": repeat_order,
+            "stepType": {"stepTypeId": 6, "stepTypeKey": "repeat", "displayOrder": 6},
+            "numberOfIterations": series,
+            "workoutSteps": [main_step, rest_step],
+            "endCondition": {"conditionTypeId": 7, "conditionTypeKey": "iterations", "displayOrder": 7, "displayable": False},
+            "endConditionValue": float(series),
+            "smartRepeat": False,
+        })
+
+    return {
+        "workoutName": nome_treino,
+        "sportType": {"sportTypeId": 5, "sportTypeKey": "strength_training", "displayOrder": 5},
+        "estimatedDurationInSecs": 2700,
+        "workoutSegments": [{
+            "segmentOrder": 1,
+            "sportType": {"sportTypeId": 5, "sportTypeKey": "strength_training", "displayOrder": 5},
+            "workoutSteps": steps,
+        }],
+        "description": "Protocolo Coach Allan Vieira (AV Team) - gerado automaticamente",
+    }
+
+
+def ensure_workouts_no_garmin(client):
+    """Garante que os treinos A/B/C existam na biblioteca de treinos do Garmin da aluna
+    (cria só na primeira vez; nas próximas execuções reaproveita os já existentes)."""
+    ids = {}
+    try:
+        existentes = client.get_workouts(limit=200) or []
+        por_nome = {w.get("workoutName"): w.get("workoutId") for w in existentes if isinstance(w, dict)}
+    except Exception as e:
+        print(f"   Aviso: não foi possível listar treinos do Garmin — {e}")
+        return ids
+
+    for letra, nome in NOMES_TREINO.items():
+        if nome in por_nome:
+            ids[letra] = por_nome[nome]
+            continue
+        try:
+            payload = build_strength_workout(nome, TREINOS_EXERCICIOS[letra])
+            resultado = client.upload_workout(payload)
+            wid = resultado.get("workoutId") if isinstance(resultado, dict) else None
+            if wid:
+                ids[letra] = wid
+                print(f"   Treino '{nome}' criado no Garmin (id {wid})")
+        except Exception as e:
+            print(f"   Aviso: falha ao criar treino '{nome}' no Garmin — {e}")
+
+    return ids
+
 
 def safe_get(d, key, default):
     """Como d.get(key, default), mas também troca None por default
@@ -171,6 +303,31 @@ tipo_esperado_hoje = treino_hoje.get("tipo", "")
 # Cardio (esteira/escada) é diário, então o lembrete é sempre depois do treino/musculação
 lembrar_apos = 17 if tipo_esperado_hoje == "musculacao" else 15
 
+# Lê o data.js da execução anterior só para saber se o treino de hoje já foi
+# agendado no Garmin (evita reagendar toda hora / a cada clique em "Atualizar")
+workout_agendado_data = None
+try:
+    with open("data.js", encoding="utf-8") as f:
+        _conteudo_anterior = f.read()
+    _prefixo = "const GARMIN = "
+    if _conteudo_anterior.startswith(_prefixo):
+        _dados_anteriores = json.loads(_conteudo_anterior[len(_prefixo):].rstrip("\n;"))
+        workout_agendado_data = _dados_anteriores.get("workout_agendado_data")
+except Exception:
+    workout_agendado_data = None
+
+# Envia (uma vez) e agenda (uma vez por dia) o treino de força no Garmin Connect
+if letra_hoje in NOMES_TREINO and workout_agendado_data != today:
+    try:
+        workout_ids = ensure_workouts_no_garmin(client)
+        wid = workout_ids.get(letra_hoje)
+        if wid:
+            client.schedule_workout(wid, today)
+            workout_agendado_data = today
+            print(f"   Treino {letra_hoje} agendado no calendário do Garmin para {today}")
+    except Exception as e:
+        print(f"   Aviso: não foi possível agendar o treino no Garmin — {e}")
+
 # Hora de Brasília = UTC-3 (GitHub Actions roda em UTC)
 hora_brasilia = hora_atual - 3  # ajuste simples; em produção usar pytz se necessário
 
@@ -283,6 +440,7 @@ data = {
     "alerta_treino_urgente": alerta_treino_urgente,
     "hora_brasilia": hora_brasilia,
     "resumo_personal": resumo_personal,
+    "workout_agendado_data": workout_agendado_data,
 }
 
 with open("data.js", "w", encoding="utf-8") as f:
