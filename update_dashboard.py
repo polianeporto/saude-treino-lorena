@@ -30,10 +30,14 @@ else:
     client.login()
     print("Autenticado via usuário/senha")
 
-today = datetime.date.today().isoformat()
-now_dt = datetime.datetime.now()
+# O GitHub Actions roda em UTC — usamos um fuso fixo de Brasília (UTC-3, sem
+# horário de verão desde 2019) para que data, dia da semana e hora batam com
+# o horário real dela, inclusive perto da meia-noite.
+BRASILIA_TZ = datetime.timezone(datetime.timedelta(hours=-3))
+now_dt = datetime.datetime.now(BRASILIA_TZ)
+today = now_dt.date().isoformat()
 now = now_dt.strftime("%d/%m/%Y às %H:%Mh")
-hora_atual = now_dt.hour  # hora local (Brasília via GitHub Actions = UTC-3... ajustar se necessário)
+hora_atual = now_dt.hour  # já em horário de Brasília
 
 # ── Envio dos treinos para o Garmin Connect ────────────────────────────────
 # Protocolo real (Coach Allan Vieira / AV Team). Cada item: (exercício, séries, repetições, descanso)
@@ -328,8 +332,7 @@ if letra_hoje in NOMES_TREINO and workout_agendado_data != today:
     except Exception as e:
         print(f"   Aviso: não foi possível agendar o treino no Garmin — {e}")
 
-# Hora de Brasília = UTC-3 (GitHub Actions roda em UTC)
-hora_brasilia = hora_atual - 3  # ajuste simples; em produção usar pytz se necessário
+hora_brasilia = hora_atual  # now_dt já está em horário de Brasília (ver BRASILIA_TZ acima)
 
 atividade_feita = False
 cardio_feito = False
