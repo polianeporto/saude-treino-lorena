@@ -208,6 +208,31 @@ if hora_brasilia >= lembrar_apos:
         alerta_treino = f"Treino de hoje: {treino_nome_hoje}. Você ainda não registrou nenhuma atividade. Vai treinar hoje?"
         alerta_treino_urgente = hora_brasilia >= 20
 
+# ── Resumo para o personal ──────────────────────────────────────────────────
+# Texto pronto para copiar e enviar ao coach, gerado toda vez que os dados são
+# atualizados (inclusive quando ela clica em "Atualizar" no dashboard).
+_fc_ref = fc_repouso if fc_repouso != "--" else 70
+_spo2_ref = spo2_min if spo2_min != "--" else 95
+_fc_cor, _fc_msg = fc_feedback(_fc_ref)
+_spo2_cor, _spo2_msg = spo2_feedback(_spo2_ref)
+_steps_cor, _steps_msg = steps_feedback(steps_pct)
+
+resumo_personal = f"""📋 Resumo diário — Lorena Almeida ({now})
+
+🏋️ Treino do dia: {treino_nome_hoje}
+Musculação: {"✅ feita" if musculacao_feita else "❌ ainda não registrada"}
+Cardio (esteira/escada): {"✅ feito" if cardio_feito else "❌ ainda não registrado"}{f" — {minutos_ativos_hoje} min de atividade hoje" if minutos_ativos_hoje else ""}
+
+⚡ Body Battery: {body_battery}/100 — {bb_msg}
+😴 Sono: {sono_h}h · score {sono_score} — {sono_msg}
+❤️ FC repouso: {fc_repouso} bpm — {_fc_msg}
+🚶 Passos: {steps}/{steps_goal} ({steps_pct}%) — {_steps_msg}
+🫁 SpO2 mínimo: {spo2_min}% — {_spo2_msg}
+📊 Estresse médio: {estresse}/100
+🔋 HRV: {hrv_val} ({hrv_status})
+
+Orientação automática: {orientacao_titulo} — {orientacao_texto}"""
+
 # Gera o data.js
 data = {
     "atualizado": now,
@@ -257,6 +282,7 @@ data = {
     "alerta_treino": alerta_treino,
     "alerta_treino_urgente": alerta_treino_urgente,
     "hora_brasilia": hora_brasilia,
+    "resumo_personal": resumo_personal,
 }
 
 with open("data.js", "w", encoding="utf-8") as f:

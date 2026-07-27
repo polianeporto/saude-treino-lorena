@@ -652,6 +652,18 @@
       </div>
     </div>
 
+    <!-- RESUMO PARA O PERSONAL -->
+    <div class="card" style="margin-bottom:16px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
+        <div class="card-title" style="margin:0;"><i class="ti ti-message-circle" style="vertical-align:-2px;margin-right:6px;"></i>Resumo para o personal</div>
+        <button class="btn-outline" id="btn-copiar-resumo" onclick="copiarResumoPersonal()" style="margin:0;font-size:0.75rem;padding:6px 12px;">
+          <i class="ti ti-copy"></i> Copiar
+        </button>
+      </div>
+      <pre id="resumo-personal-texto" style="white-space:pre-wrap;font-family:inherit;font-size:0.82rem;line-height:1.6;color:var(--text);margin:0;">Aguardando primeira atualização...</pre>
+      <div style="font-size:0.7rem;color:var(--muted);margin-top:8px;">Atualizado automaticamente toda vez que os dados são sincronizados (a cada hora, ou ao clicar em "Atualizar" acima).</div>
+    </div>
+
     <div class="grid grid-4" style="margin-bottom:10px;">
       <div class="card purple">
         <div class="card-label">Body Battery</div>
@@ -1286,6 +1298,9 @@
     // Resumo Claude
     set('frase-sono', '"' + G.frase_sono + '"');
 
+    // Resumo para o personal
+    if (G.resumo_personal) set('resumo-personal-texto', G.resumo_personal);
+
     // Cards
     set('val-bb', G.body_battery);
     set('sub-bb', 'Máx: ' + G.bb_max + ' · Mín: ' + G.bb_min);
@@ -1470,6 +1485,19 @@ function abrirConfig() {
   cfg.style.display = cfg.style.display === "none" ? "block" : "none";
   const t = getToken();
   if (t) document.getElementById("gh-token-input").value = t;
+}
+
+function copiarResumoPersonal() {
+  const texto = document.getElementById("resumo-personal-texto").textContent;
+  const btn = document.getElementById("btn-copiar-resumo");
+  const original = btn.innerHTML;
+  navigator.clipboard.writeText(texto).then(() => {
+    btn.innerHTML = '<i class="ti ti-check"></i> Copiado!';
+    setTimeout(() => { btn.innerHTML = original; }, 2000);
+  }).catch(() => {
+    btn.innerHTML = '<i class="ti ti-x"></i> Erro ao copiar';
+    setTimeout(() => { btn.innerHTML = original; }, 2000);
+  });
 }
 
 function triggerUpload(grupo) {
