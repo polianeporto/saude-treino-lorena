@@ -616,6 +616,7 @@
   <a href="#hoje" class="active"><i class="ti ti-layout-dashboard"></i> Hoje</a>
   <a href="#resumo"><i class="ti ti-brain"></i> Claude</a>
   <a href="#ficha"><i class="ti ti-barbell"></i> Ficha</a>
+  <a href="#alimentar"><i class="ti ti-salad"></i> Plano Alimentar</a>
   <a href="#progresso"><i class="ti ti-camera"></i> Progresso</a>
   <a href="#checkins"><i class="ti ti-calendar"></i> Check-ins</a>
   <a href="#saude"><i class="ti ti-heart-rate-monitor"></i> Saúde</a>
@@ -797,124 +798,224 @@
   <section id="ficha">
     <div class="section-title"><i class="ti ti-barbell"></i> Ficha semanal</div>
 
-    <!-- ✏️ PERSONALIZAR: ficha de treino — placeholders "Treino A" a "Treino G". Edite nomes,
-         exercícios, séries/repetições e o cardio de cada dia. Mantenha em sincronia com o
-         PLANO_SEMANA do update_dashboard.py (mesmos nomes de treino). -->
-    <div class="treino-day">
-      <div class="treino-day-header" onclick="toggle(this)">
-        <i class="ti ti-barbell"></i>
-        <div><div class="day-name">Segunda-feira</div><div class="day-desc">Treino A</div></div>
-        <span class="day-badge media">Média</span>
+    <!-- Protocolo: Treinador Allan Vieira (AV TEAM) · Objetivo: hipertrofia muscular & definição
+         Sistema A/B/C alternado em ciclo de 2 semanas. Cardio 60min (esteira/escada) todo dia. -->
+    <div class="card" style="margin-bottom:14px;">
+      <div style="font-size:0.83rem;line-height:1.6;">
+        <strong>Como funciona:</strong> os treinos A, B e C se alternam ao longo de 2 semanas — a sequência
+        muda de ordem na semana 2 para variar o estímulo. Cardio de <strong>60 min em intensidade moderada
+        (esteira ou escada)</strong> todos os dias, sempre <strong>depois</strong> da musculação. Sábado e
+        domingo são de cardio apenas (60 min), sem treino de musculação.
       </div>
-      <div class="treino-day-body">
-        <table>
-          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th></tr>
-          <tr><td>Exercício 1</td><td>4x</td><td>10–12</td></tr>
-          <tr><td>Exercício 2</td><td>4x</td><td>12</td></tr>
-          <tr><td>Exercício 3</td><td>3x</td><td>12</td></tr>
+    </div>
+
+    <div class="grid grid-2" style="margin-bottom:16px;">
+      <div class="card">
+        <div class="card-label">Semana 1</div>
+        <table style="margin-top:6px;">
+          <tr><td>Segunda</td><td><strong>A</strong></td></tr>
+          <tr><td>Terça</td><td><strong>B</strong></td></tr>
+          <tr><td>Quarta</td><td><strong>C</strong></td></tr>
+          <tr><td>Quinta</td><td><strong>B</strong></td></tr>
+          <tr><td>Sexta</td><td><strong>A</strong></td></tr>
+          <tr><td>Sáb / Dom</td><td>OFF · só cardio</td></tr>
         </table>
-        <div class="cardio-info"><i class="ti ti-walk"></i> <strong>Cardio:</strong> a definir</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Semana 2</div>
+        <table style="margin-top:6px;">
+          <tr><td>Segunda</td><td><strong>C</strong></td></tr>
+          <tr><td>Terça</td><td><strong>B</strong></td></tr>
+          <tr><td>Quarta</td><td><strong>A</strong></td></tr>
+          <tr><td>Quinta</td><td><strong>B</strong></td></tr>
+          <tr><td>Sexta</td><td><strong>C</strong></td></tr>
+          <tr><td>Sáb / Dom</td><td>OFF · só cardio</td></tr>
+        </table>
       </div>
     </div>
 
     <div class="treino-day">
       <div class="treino-day-header" onclick="toggle(this)">
         <i class="ti ti-barbell"></i>
-        <div><div class="day-name">Terça-feira</div><div class="day-desc">Treino B</div></div>
-        <span class="day-badge media">Média</span>
-      </div>
-      <div class="treino-day-body">
-        <table>
-          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th></tr>
-          <tr><td>Exercício 1</td><td>4x</td><td>10–12</td></tr>
-          <tr><td>Exercício 2</td><td>3x</td><td>12</td></tr>
-          <tr><td>Exercício 3</td><td>3x</td><td>12</td></tr>
-        </table>
-        <div class="cardio-info"><i class="ti ti-bike"></i> <strong>Cardio:</strong> a definir</div>
-      </div>
-    </div>
-
-    <div class="treino-day">
-      <div class="treino-day-header" onclick="toggle(this)">
-        <i class="ti ti-barbell"></i>
-        <div><div class="day-name">Quarta-feira</div><div class="day-desc">Treino C</div></div>
-        <span class="day-badge media">Média</span>
-      </div>
-      <div class="treino-day-body">
-        <table>
-          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th></tr>
-          <tr><td>Exercício 1</td><td>4x</td><td>10–12</td></tr>
-          <tr><td>Exercício 2</td><td>4x</td><td>12</td></tr>
-          <tr><td>Exercício 3</td><td>3x</td><td>15</td></tr>
-        </table>
-        <div class="cardio-info"><i class="ti ti-walk"></i> <strong>Cardio:</strong> a definir</div>
-      </div>
-    </div>
-
-    <div class="treino-day">
-      <div class="treino-day-header" onclick="toggle(this)">
-        <i class="ti ti-barbell"></i>
-        <div><div class="day-name">Quinta-feira</div><div class="day-desc">Treino D</div></div>
-        <span class="day-badge media">Média</span>
-      </div>
-      <div class="treino-day-body">
-        <table>
-          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th></tr>
-          <tr><td>Exercício 1</td><td>4x</td><td>10–12</td></tr>
-          <tr><td>Exercício 2</td><td>3x</td><td>12</td></tr>
-          <tr><td>Exercício 3</td><td>3x</td><td>12</td></tr>
-        </table>
-        <div class="cardio-info"><i class="ti ti-bike"></i> <strong>Cardio:</strong> a definir</div>
-      </div>
-    </div>
-
-    <div class="treino-day">
-      <div class="treino-day-header" onclick="toggle(this)">
-        <i class="ti ti-barbell"></i>
-        <div><div class="day-name">Sexta-feira</div><div class="day-desc">Treino E</div></div>
+        <div><div class="day-name">Treino A</div><div class="day-desc">MMII · Coxa completa</div></div>
         <span class="day-badge alta">Alta</span>
       </div>
       <div class="treino-day-body">
         <table>
-          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th></tr>
-          <tr><td>Exercício 1</td><td>4x</td><td>10–12</td></tr>
-          <tr><td>Exercício 2</td><td>4x</td><td>12</td></tr>
-          <tr><td>Exercício 3</td><td>3x</td><td>15 cada</td></tr>
+          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th><th>Descanso</th></tr>
+          <tr><td>Cadeira extensora (pico de contração 2s em todas as reps + 1 drop-set na última série)</td><td>4x</td><td>15/10/10/10</td><td>1min</td></tr>
+          <tr><td>Leg press 45° (priorizar boa amplitude)</td><td>3x</td><td>12 a 15</td><td>2min</td></tr>
+          <tr><td>Agachamento no Hack (descer até o talo)</td><td>4x</td><td>15/10/10/10</td><td>1min</td></tr>
+          <tr><td>Cadeira flexora (pico de contração 3s nas 8 primeiras reps)</td><td>4x</td><td>12 a 15</td><td>1min</td></tr>
+          <tr><td>Mesa flexora (drop-set)</td><td>2x</td><td>10.10.10</td><td>2min</td></tr>
+          <tr><td>Cadeira adutora</td><td>4x</td><td>12 a 15</td><td>1min</td></tr>
         </table>
-        <div class="cardio-info"><i class="ti ti-run"></i> <strong>Cardio:</strong> a definir</div>
+        <div class="cardio-info"><i class="ti ti-walk"></i> <strong>Cardio:</strong> 60 min esteira/escada · intensidade moderada</div>
+      </div>
+    </div>
+
+    <div class="treino-day">
+      <div class="treino-day-header" onclick="toggle(this)">
+        <i class="ti ti-barbell"></i>
+        <div><div class="day-name">Treino B</div><div class="day-desc">MMSS · Superiores completo</div></div>
+        <span class="day-badge media">Média</span>
+      </div>
+      <div class="treino-day-body">
+        <table>
+          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th><th>Descanso</th></tr>
+          <tr><td>Desenvolvimento na máquina</td><td>4x</td><td>12 a 15</td><td>40s</td></tr>
+          <tr><td>Elevação lateral com halteres (atenção ao tempo de descanso)</td><td>6x</td><td>15</td><td>30s</td></tr>
+          <tr><td>Crucifixo inverso no voador, peg. pronada (pico de contração 2s)</td><td>3x</td><td>12 a 15</td><td>40s</td></tr>
+          <tr><td>Remada baixa peg. pronada aberta (pico de contração 2s)</td><td>4x</td><td>15/12/10/10</td><td>1min</td></tr>
+          <tr><td>Remada baixa peg. neutra com triângulo</td><td>3x</td><td>12 a 15</td><td>40s</td></tr>
+          <tr><td>Pulley frente peg. pronada aberta</td><td>3x</td><td>12 a 15</td><td>40s</td></tr>
+          <tr><td>Face pull com a corda (pico de contração 2s)</td><td>4x</td><td>12 a 15</td><td>40s</td></tr>
+        </table>
+        <div class="cardio-info"><i class="ti ti-walk"></i> <strong>Cardio:</strong> 60 min esteira/escada · intensidade moderada</div>
+      </div>
+    </div>
+
+    <div class="treino-day">
+      <div class="treino-day-header" onclick="toggle(this)">
+        <i class="ti ti-barbell"></i>
+        <div><div class="day-name">Treino C</div><div class="day-desc">MMII · Glúteo e posterior de coxa</div></div>
+        <span class="day-badge alta">Alta</span>
+      </div>
+      <div class="treino-day-body">
+        <table>
+          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th><th>Descanso</th></tr>
+          <tr><td>Cadeira abdutora em 45° (ativação)</td><td>5x</td><td>15</td><td>1min</td></tr>
+          <tr><td>Abdução de quadril cruzado no cross over (não gangorrar o quadril)</td><td>4x</td><td>12</td><td>1min</td></tr>
+          <tr><td>Elevação pélvica (pico de contração 2s nas 2 primeiras séries, depois subir carga)</td><td>5x</td><td>15/15/10/10/10</td><td>2min</td></tr>
+          <tr><td>Terra sumô (carga máx)</td><td>4x</td><td>15/10/10/10</td><td>2min</td></tr>
+          <tr><td>Afundo no Smith (pé da frente em cima do step, descer até o talo)</td><td>3x</td><td>12</td><td>2min</td></tr>
+          <tr><td>Stiff com os pés abduzidos</td><td>4x</td><td>15/10/10/10</td><td>2min</td></tr>
+        </table>
+        <div class="cardio-info"><i class="ti ti-walk"></i> <strong>Cardio:</strong> 60 min esteira/escada · intensidade moderada</div>
+      </div>
+    </div>
+
+    <div class="treino-day">
+      <div class="treino-day-header" onclick="toggle(this)">
+        <i class="ti ti-list-check"></i>
+        <div><div class="day-name">Diário</div><div class="day-desc">Abdominal + panturrilha — alternar um por dia após o treino</div></div>
+        <span class="day-badge media">Todo dia</span>
+      </div>
+      <div class="treino-day-body">
+        <table>
+          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th></tr>
+          <tr><td>Panturrilha sentado (banco/sóleo)</td><td>3x</td><td>12</td></tr>
+          <tr><td>Panturrilha no leg horizontal</td><td>3x</td><td>12</td></tr>
+          <tr><td>Abdominal reto curto no solo + infra sanfona (bi-set)</td><td>5x</td><td>20 / 15</td></tr>
+          <tr><td>Prancha</td><td>4x</td><td>1 min</td></tr>
+        </table>
       </div>
     </div>
 
     <div class="treino-day">
       <div class="treino-day-header" onclick="toggle(this)">
         <i class="ti ti-leaf"></i>
-        <div><div class="day-name">Sábado</div><div class="day-desc">Descanso ativo</div></div>
+        <div><div class="day-name">Sábado e domingo</div><div class="day-desc">OFF de treino · só cardio</div></div>
         <span class="day-badge baixa">Baixa</span>
       </div>
       <div class="treino-day-body">
         <div class="alert green" style="margin-top:8px;">
           <i class="ti ti-check"></i>
-          <div><strong>Cardio leve.</strong> Bike leve ou caminhada ao ar livre · FC abaixo de 120 bpm · 20–30 min</div>
+          <div><strong>Sem musculação.</strong> 60 min de cardio (esteira ou escada) em intensidade moderada.</div>
         </div>
       </div>
     </div>
 
-    <div class="treino-day">
-      <div class="treino-day-header" onclick="toggle(this)">
-        <i class="ti ti-barbell"></i>
-        <div><div class="day-name">Domingo</div><div class="day-desc">Treino F / Zona 2</div></div>
-        <span class="day-badge baixa">Baixa</span>
-      </div>
-      <div class="treino-day-body">
-        <table>
-          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th></tr>
-          <tr><td>Exercício 1</td><td>4x</td><td>10–12</td></tr>
-          <tr><td>Exercício 2</td><td>3x</td><td>12</td></tr>
-        </table>
-        <div class="cardio-info"><i class="ti ti-walk"></i> <strong>Cardio:</strong> a definir</div>
+    <div class="card" style="margin-top:4px;">
+      <div class="card-label">Legenda dos métodos</div>
+      <div style="font-size:0.78rem;color:var(--muted);line-height:1.7;">
+        <strong>Progressão de carga:</strong> aumenta a carga conforme cai o número de reps (ou mantém a cada série).<br>
+        <strong>Bi-set:</strong> alterna entre dois exercícios, podendo descansar só ao final dos dois.<br>
+        <strong>Ativação:</strong> carga leve com número de reps maior, para "ligar" o músculo antes do trabalho pesado.<br>
+        <strong>Drop-set:</strong> reduz a carga sem descanso ao fim da série para prolongar o estímulo.
       </div>
     </div>
 
+  </section>
+
+  <!-- PLANO ALIMENTAR -->
+  <section id="alimentar">
+    <div class="section-title"><i class="ti ti-salad"></i> Plano alimentar</div>
+
+    <div class="card" style="margin-bottom:16px;">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-weight:700;font-size:0.95rem;">Objetivo: Aumento de massa muscular & Definição</div>
+          <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">Fase: Cutting · Coach: Allan Vieira (AV Team — Acessoria Esportiva)</div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <span class="tag purple">Altura: 1,73m</span>
+          <span class="tag purple">Peso: 61kg</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrap-outer" style="overflow-x:auto;">
+    <table>
+      <tr><th>Refeição</th><th>Horário</th><th>Alimentos e quantidades</th></tr>
+      <tr>
+        <td>Café da manhã<br><span style="color:var(--muted);font-weight:400;">Pré-treino</span></td>
+        <td>07:30h</td>
+        <td>
+          <strong>Opção 1:</strong> 2 fatias de pão integral, 4 ovos (descartar 3 gemas), 25g requeijão light ou queijo cottage, 150g mamão, 10g aveia ou chia, café sem açúcar ou chás à vontade.<br><br>
+          <strong>Opção 2:</strong> 50g tapioca, 4 ovos (descartar 3 gemas), 25g requeijão light ou queijo cottage, 150g mamão, 10g aveia ou chia, café sem açúcar ou chás à vontade.
+        </td>
+      </tr>
+      <tr>
+        <td>Pós-treino</td>
+        <td>Imediatamente após o treino</td>
+        <td>30g whey, 6g creatina, 100g morangos.</td>
+      </tr>
+      <tr>
+        <td>Almoço</td>
+        <td>15:00h</td>
+        <td>100g arroz ou batata inglesa, 130g filé de frango / patinho / lombo de porco / filé de tilápia, 100g legumes (vagem, brócolis, beterraba, cenoura, chuchu ou abóbora), folhas de salada à vontade, 3g azeite extravirgem (usar só frio), 1 fatia de abacaxi.</td>
+      </tr>
+      <tr>
+        <td>Lanche 1</td>
+        <td>18:00h</td>
+        <td>150g iogurte Activia triplo zero, 30g whey, 120g frutas (uvas, morangos, kiwi, melão, melancia, mamão, abacaxi, maçã ou pera), 10g aveia ou chia.</td>
+      </tr>
+      <tr>
+        <td>Jantar</td>
+        <td>22:00h</td>
+        <td>130g filé de frango / patinho / lombo de porco / filé de tilápia, 100g legumes (vagem, brócolis, beterraba, cenoura, chuchu ou abóbora), folhas de salada à vontade, 3g azeite extravirgem (usar só frio), 150g gelatina light.</td>
+      </tr>
+    </table>
+    </div>
+
+    <div class="card card-warn" style="margin-top:14px;background:#fdf8e8;border-color:#eed898;">
+      <div class="card-title" style="color:var(--warn);">Pré-treino (40 min antes de treinar)</div>
+      5mg ioimbina + 200mg cafeína + 20mcg clembuterol
+    </div>
+
+    <div class="card" style="margin-top:12px;">
+      <div class="card-title">Recomendações</div>
+      <div style="font-size:0.83rem;line-height:1.7;">
+        Ingerir no mínimo <strong>3L de água por dia</strong>.<br>
+        Preparo dos alimentos <strong>sem óleos</strong> · chás e café sem açúcar à vontade (bebidas sem açúcar, com moderação).
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:12px;">
+      <div class="card-title">Lista de manipulados</div>
+      <div style="font-size:0.78rem;color:var(--muted);margin-bottom:8px;">Usar todos os dias durante todo o protocolo, incluindo dias sem treinar.</div>
+      <table>
+        <tr><th>Grupo</th><th>Composição</th></tr>
+        <tr><td>Vitaminas<br><span style="font-size:0.7rem;color:var(--muted);">(pela manhã, após a 1ª refeição)</span></td><td>1 cápsula Mult Vit A–Z · 2 cápsulas Ômega 3 · Vit D3 2.000ui · Vit B12 e B9 1.000mcg cada · 15 gotas de própolis (ou 150mg em cápsula)</td></tr>
+        <tr><td>Manipulado 1<br><span style="font-size:0.7rem;color:var(--muted);">(manipular tudo junto, pela manhã)</span></td><td>NAC 600mg · Saw Palmetto 300mg · Berberina 200mg · Biotina 10mg</td></tr>
+      </table>
+    </div>
+
+    <div class="alert yellow" style="margin-top:14px;">
+      <i class="ti ti-alert-triangle"></i>
+      <div><strong>Atualizações a cada 15 dias</strong> — enviar fotos e peso sempre no mesmo padrão. A falta de atualização é considerada perda do acompanhamento do período.</div>
+    </div>
   </section>
 
   <!-- PROGRESSO CORPORAL -->

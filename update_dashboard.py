@@ -139,22 +139,29 @@ else:
     frase_sono = "Não foi possível ler os dados de sono desta noite."
 
 # ── Verifica se já fez atividade hoje ─────────────────────────────────────────
-# ✏️ PERSONALIZAR: plano semanal — nomes devem bater com a ficha em index.html (Treino A..F)
-# 0=Segunda … 6=Domingo · lembrar_apos = hora BRT para alertar se não treinou
-PLANO_SEMANA = {
-    0: {"nome": "Treino A",           "tipo": "musculacao", "lembrar_apos": 17},  # Segunda
-    1: {"nome": "Treino B",           "tipo": "musculacao", "lembrar_apos": 17},  # Terça
-    2: {"nome": "Treino C",           "tipo": "musculacao", "lembrar_apos": 17},  # Quarta
-    3: {"nome": "Treino D",           "tipo": "musculacao", "lembrar_apos": 17},  # Quinta
-    4: {"nome": "Treino E",           "tipo": "musculacao", "lembrar_apos": 17},  # Sexta
-    5: {"nome": "Descanso ativo",     "tipo": "bike",       "lembrar_apos": 15},  # Sábado
-    6: {"nome": "Treino F",           "tipo": "musculacao", "lembrar_apos": 15},  # Domingo
+# Protocolo real (Coach Allan Vieira / AV Team): sistema A/B/C alternado em ciclo de 2 semanas.
+# Nomes devem bater com a ficha em index.html. 0=Segunda … 6=Domingo.
+TREINOS = {
+    "A":   {"nome": "Treino A — MMII Coxa completa",        "tipo": "musculacao"},
+    "B":   {"nome": "Treino B — MMSS Superior completo",    "tipo": "musculacao"},
+    "C":   {"nome": "Treino C — MMII Glúteo e posterior",   "tipo": "musculacao"},
+    "OFF": {"nome": "Descanso — só cardio",                 "tipo": "cardio"},
 }
+SEMANA_1 = {0: "A", 1: "B", 2: "C", 3: "B", 4: "A", 5: "OFF", 6: "OFF"}
+SEMANA_2 = {0: "C", 1: "B", 2: "A", 3: "B", 4: "C", 5: "OFF", 6: "OFF"}
+
+# ✏️ Ajustar se a semana 1/2 real não bater: aqui uso a paridade da semana ISO do ano
+# (semanas ímpares = Semana 1, pares = Semana 2) como referência simples e estável.
+semana_do_ano = now_dt.isocalendar()[1]
+padrao_semana = SEMANA_1 if semana_do_ano % 2 == 1 else SEMANA_2
 
 dia_semana = now_dt.weekday()  # 0=segunda … 6=domingo
-treino_hoje = PLANO_SEMANA.get(dia_semana, {})
+letra_hoje = padrao_semana.get(dia_semana, "OFF")
+treino_hoje = TREINOS[letra_hoje]
 treino_nome_hoje = treino_hoje.get("nome", "")
-lembrar_apos = treino_hoje.get("lembrar_apos", 17)
+tipo_esperado_hoje = treino_hoje.get("tipo", "")
+# Cardio (esteira/escada) é diário, então o lembrete é sempre depois do treino/musculação
+lembrar_apos = 17 if tipo_esperado_hoje == "musculacao" else 15
 
 # Hora de Brasília = UTC-3 (GitHub Actions roda em UTC)
 hora_brasilia = hora_atual - 3  # ajuste simples; em produção usar pytz se necessário
@@ -172,11 +179,12 @@ try:
         if duracao > 300:  # mais de 5 min conta
             atividade_feita = True
             minutos_ativos_hoje += round(duracao / 60)
-            if any(k in tipo for k in ["cycling", "bike", "indoor_cycling"]):
+            # Ela não corre — cardio é esteira (caminhada/corrida leve na esteira) ou escada/stepper
+            if any(k in tipo for k in ["walking", "treadmill", "stair", "elliptical", "indoor_walking"]):
                 cardio_feito = True
-            if any(k in tipo for k in ["strength", "fitness_equipment", "cardio"]):
+            if any(k in tipo for k in ["strength", "fitness_equipment"]):
                 musculacao_feita = True
-    print(f"   Atividades hoje: {len(atividades_hoje)} | musculação={musculacao_feita} | bike={cardio_feito}")
+    print(f"   Atividades hoje: {len(atividades_hoje)} | musculação={musculacao_feita} | cardio={cardio_feito}")
 except Exception as e:
     print(f"   Aviso: não foi possível buscar atividades de hoje — {e}")
 
@@ -185,11 +193,10 @@ alerta_treino = ""
 alerta_treino_urgente = False
 
 if hora_brasilia >= lembrar_apos:
-    tipo_esperado = treino_hoje.get("tipo", "")
-    if tipo_esperado == "bike" and not cardio_feito and not atividade_feita:
-        alerta_treino = "Ainda não fez a bike hoje! Vai lá — 20 a 30 minutos, FC abaixo de 130 bpm. Você consegue 💪"
+    if tipo_esperado_hoje == "cardio" and not cardio_feito and not atividade_feita:
+        alerta_treino = "Ainda não fez o cardio de hoje (60 min esteira/escada)! Vai lá 💪"
         alerta_treino_urgente = hora_brasilia >= 20
-    elif tipo_esperado == "musculacao" and not musculacao_feita and not atividade_feita:
+    elif tipo_esperado_hoje == "musculacao" and not musculacao_feita and not atividade_feita:
         alerta_treino = f"Treino de hoje: {treino_nome_hoje}. Você ainda não registrou nenhuma atividade. Vai treinar hoje?"
         alerta_treino_urgente = hora_brasilia >= 20
 
