@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "27/07/2026 às 20:50h",
+  "atualizado": "27/07/2026 às 20:56h",
   "hoje": "2026-07-27",
   "body_battery": 51,
   "bb_max": 55,
@@ -46,5 +46,5 @@ const GARMIN = {
   "alerta_treino": "Treino de hoje: Treino A — MMII Coxa completa. Você ainda não registrou nenhuma atividade. Vai treinar hoje?",
   "alerta_treino_urgente": false,
   "hora_brasilia": 17,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (27/07/2026 às 20:50h)\n\n🏋️ Treino do dia: Treino A — MMII Coxa completa\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 51/100 — ⚡ Moderado — cuidado na intensidade\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 74 bpm — ⚡ Atenção\n🚶 Passos: 392/10000 (4%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 31/100\n🔋 HRV: -- (--)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino."
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (27/07/2026 às 20:56h)\n\n🏋️ Treino do dia: Treino A — MMII Coxa completa\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 51/100 — ⚡ Moderado — cuidado na intensidade\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 74 bpm — ⚡ Atenção\n🚶 Passos: 392/10000 (4%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 31/100\n🔋 HRV: -- (--)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino."
 };
