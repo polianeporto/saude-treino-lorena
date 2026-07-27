@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lorena · Saúde & Treino</title>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <script src="data.js"></script>
+  <style>
+    :root {
+      --bg: #faf7f9;
+      --card: #ffffff;
+      --card2: #f5f0f4;
+      --border: #ecdde8;
+      --accent: #c0527e;
+      --accent-light: #d4688f;
+      --teal: #1a9e7a;
+      --pink: #c0527e;
+      --orange: #c47240;
+      --text: #2a1f28;
+      --muted: #9a8898;
+      --danger: #c94060;
+      --warn: #b07a20;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Figtree', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--card);
+      padding: 28px 24px 22px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo-mark {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: rgba(192,96,138,0.12);
+      border: 1px solid rgba(192,96,138,0.25);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-mark svg { width: 28px; height: 28px; }
+    .header-text h1 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+    .header-text h1 span { color: var(--accent-light); }
+    .header-text p { color: var(--muted); font-size: 0.8rem; margin-top: 3px; }
+    .badge-updated {
+      margin-left: auto;
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      color: var(--accent-light);
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #btn-atualizar:hover { background: rgba(192,96,138,0.08) !important; }
+    #btn-atualizar:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      gap: 2px;
+      padding: 10px 14px;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      scrollbar-width: none;
+    }
+    nav::-webkit-scrollbar { display: none; }
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 8px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s;
+    }
+    nav a i { font-size: 15px; }
+    nav a:hover, nav a.active {
+      background: rgba(192,96,138,0.12);
+      color: var(--accent-light);
+    }
+
+    /* MAIN */
+    main { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+    section { margin-bottom: 36px; }
+    .section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title i { font-size: 14px; color: var(--accent-light); }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ORIENTAÇÃO DO DIA — destaque */
+    .orientacao-card {
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      border: 1px solid;
+    }
+    .orientacao-card.green { background: #edfaf5; border-color: #a8e8d4; }
+    .orientacao-card.yellow { background: #fdf7e8; border-color: #f0d990; }
+    .orientacao-card.red { background: #fdeef0; border-color: #f5b8c4; }
+    .orientacao-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 22px;
+    }
+    .orientacao-card.green .orientacao-icon-wrap { background: #c6f0e2; }
+    .orientacao-card.yellow .orientacao-icon-wrap { background: #faeab0; }
+    .orientacao-card.red .orientacao-icon-wrap { background: #fad0d8; }
+    .orientacao-titulo {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .orientacao-card.green .orientacao-titulo { color: var(--teal); }
+    .orientacao-card.yellow .orientacao-titulo { color: var(--warn); }
+    .orientacao-card.red .orientacao-titulo { color: var(--danger); }
+    .orientacao-texto { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+
+    /* CARDS GRID */
+    .grid { display: grid; gap: 10px; }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: 600px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .card-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .card-value {
+      font-size: 1.9rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .card-unit { font-size: 0.85rem; font-weight: 400; color: var(--muted); margin-left: 3px; }
+    .card-sub { font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
+
+    .card.purple .card-value { color: var(--accent-light); }
+    .card.pink .card-value { color: var(--pink); }
+    .card.green .card-value { color: var(--teal); }
+    .card.orange .card-value { color: var(--orange); }
+    .card.red .card-value { color: var(--danger); }
+    .card.yellow .card-value { color: var(--warn); }
+
+    /* MINI FEEDBACK */
+    .mini-feedback {
+      font-size: 0.68rem;
+      font-weight: 600;
+      margin-top: 8px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .mini-feedback i { font-size: 12px; }
+    .mini-feedback.red { background: #fde8ec; color: var(--danger); }
+    .mini-feedback.green { background: #e0f5ee; color: var(--teal); }
+    .mini-feedback.yellow { background: #fdf3d8; color: var(--warn); }
+
+    /* PROGRESS BAR */
+    .progress-wrap { margin-top: 8px; }
+    .progress-label { display: flex; justify-content: space-between; font-size: 0.73rem; color: var(--muted); margin-bottom: 5px; }
+    .progress-bar { height: 5px; background: var(--border); border-radius: 99px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 99px; transition: width 0.5s ease; }
+
+    /* CLAUDE BOX */
+    .claude-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 10px;
+    }
+    .claude-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .claude-avatar {
+      width: 38px;
+      height: 38px;
+      background: rgba(192,96,138,0.12);
+      border: 1px solid rgba(192,96,138,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent-light);
+      font-size: 18px;
+    }
+    .claude-title { font-size: 0.88rem; font-weight: 700; }
+    .claude-date { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
+    .claude-frase {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--accent-light);
+      line-height: 1.65;
+      border-left: 2px solid var(--accent);
+      padding-left: 14px;
+      margin-bottom: 12px;
+    }
+    .claude-detalhe { font-size: 0.77rem; color: var(--muted); line-height: 1.6; }
+
+    /* TAGS */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-right: 5px;
+    }
+    .tag.red { background: #fde8ec; color: var(--danger); }
+    .tag.yellow { background: #fdf3d8; color: var(--warn); }
+    .tag.green { background: #e0f5ee; color: var(--teal); }
+    .tag.purple { background: #fce8f0; color: var(--accent); }
+
+    /* FEEDBACK ITEMS */
+    .feedback-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      margin-bottom: 7px;
+      line-height: 1.55;
+      align-items: flex-start;
+      border: 1px solid;
+    }
+    .feedback-item i { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .feedback-item.green { background: #edfaf5; border-color: #b8e8d8; }
+    .feedback-item.green i { color: var(--teal); }
+    .feedback-item.yellow { background: #fdf8e8; border-color: #eed898; }
+    .feedback-item.yellow i { color: var(--warn); }
+    .feedback-item.red { background: #fdf0f2; border-color: #f0c0c8; }
+    .feedback-item.red i { color: var(--danger); }
+
+    /* ALERT */
+    .alert {
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-size: 0.83rem;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 9px;
+      border: 1px solid;
+      line-height: 1.55;
+    }
+    .alert i { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .alert.red { background: #fdf0f2; border-color: #f0c0c8; }
+    .alert.red i { color: var(--danger); }
+    .alert.yellow { background: #fdf8e8; border-color: #eed898; }
+    .alert.yellow i { color: var(--warn); }
+    .alert.green { background: #edfaf5; border-color: #b8e8d8; }
+    .alert.green i { color: var(--teal); }
+    .alert strong { display: block; margin-bottom: 3px; }
+
+    /* CHECK-IN */
+    .checkin {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 10px;
+    }
+    .checkin-date { font-size: 0.72rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .checkin-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; color: var(--accent-light); }
+    .checkin-body { font-size: 0.83rem; color: var(--text); line-height: 1.6; }
+
+    /* TREINO */
+    .treino-day {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    .treino-day-header {
+      padding: 13px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+    .treino-day-header:hover { background: var(--card2); }
+    .treino-day-header i { font-size: 20px; color: var(--accent-light); flex-shrink: 0; }
+    .day-name { font-weight: 700; font-size: 0.9rem; }
+    .day-desc { font-size: 0.75rem; color: var(--muted); }
+    .day-badge {
+      margin-left: auto;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+    .day-badge.media { background: #fce8f0; color: var(--accent); }
+    .day-badge.alta { background: #fce8f0; color: var(--pink); }
+    .day-badge.baixa { background: #e0f5ee; color: var(--teal); }
+    .treino-day-body { padding: 0 16px 14px; display: none; }
+    .treino-day-body.open { display: block; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 10px; }
+    th { text-align: left; color: var(--muted); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.5px; padding: 6px 8px; border-bottom: 1px solid var(--border); }
+    td { padding: 8px 8px; border-bottom: 1px solid var(--border); }
+    tr:last-child td { border-bottom: none; }
+    .cardio-info {
+      margin-top: 10px;
+      background: #fce8f0;
+      border: 1px solid #f0c0d4;
+      border-radius: 10px;
+      padding: 9px 14px;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cardio-info i { color: var(--accent-light); font-size: 16px; }
+
+    /* OBJETIVOS */
+    .objetivo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 7px;
+    }
+    .objetivo i { font-size: 22px; color: var(--accent-light); flex-shrink: 0; }
+    .objetivo-text { font-size: 0.87rem; font-weight: 600; }
+    .objetivo-sub { font-size: 0.74rem; color: var(--muted); margin-top: 2px; }
+
+    /* REGRAS */
+    .regra {
+      display: flex;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 7px;
+      font-size: 0.83rem;
+      align-items: flex-start;
+      line-height: 1.55;
+    }
+    .regra-num {
+      background: #fce8f0;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 0.72rem;
+      min-width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* PROGRESSO CORPORAL */
+    .meta-corpo {
+      background: var(--card);
+      border: 1px solid #f0c0d4;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .meta-corpo-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .meta-corpo-header i { font-size: 24px; color: var(--pink); }
+    .meta-corpo-title { font-size: 0.95rem; font-weight: 700; }
+    .meta-corpo-sub { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+    .meta-box {
+      background: #fdf0f5;
+      border: 1px solid #f0c8d8;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 0.83rem;
+      line-height: 1.6;
+    }
+    .meta-box strong { color: var(--pink); }
+
+    .grupo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    @media (max-width: 500px) { .grupo-grid { grid-template-columns: 1fr; } }
+    .grupo-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .grupo-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .grupo-header i { font-size: 20px; color: var(--accent-light); }
+    .grupo-nome { font-size: 0.88rem; font-weight: 700; }
+    .grupo-data { font-size: 0.7rem; color: var(--muted); }
+    .foto-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--card2);
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      text-align: center;
+      padding: 16px;
+    }
+    .foto-placeholder i { font-size: 32px; opacity: 0.4; }
+    .analise-placeholder {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.55;
+      padding: 10px 12px;
+      background: #fdf5f8;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .instrucao-foto {
+      background: var(--card);
+      border: 1px solid #f0c8d8;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 16px;
+      font-size: 0.83rem;
+      line-height: 1.65;
+    }
+    .instrucao-foto strong { color: var(--accent-light); }
+
+    /* UPLOAD */
+    .upload-setup {
+      background: #fdf5f8;
+      border: 1px dashed #f0c8d8;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+      font-size: 0.83rem;
+    }
+    .upload-setup h3 { font-size: 0.88rem; font-weight: 700; color: var(--accent); margin-bottom: 10px; }
+    .upload-setup input[type=text], .upload-setup input[type=password] {
+      width: 100%; padding: 9px 12px; border: 1px solid var(--border);
+      border-radius: 8px; font-family: inherit; font-size: 0.82rem;
+      background: var(--card); color: var(--text); margin-top: 6px;
+    }
+    .btn-rosa {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--accent); color: #fff; border: none;
+      padding: 9px 18px; border-radius: 10px; font-size: 0.82rem;
+      font-weight: 700; cursor: pointer; font-family: inherit;
+      transition: opacity 0.15s; margin-top: 10px;
+    }
+    .btn-rosa:hover { opacity: 0.85; }
+    .btn-rosa i { font-size: 16px; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: transparent; color: var(--accent);
+      border: 1.5px solid var(--accent);
+      padding: 8px 16px; border-radius: 10px; font-size: 0.82rem;
+      font-weight: 700; cursor: pointer; font-family: inherit;
+      transition: all 0.15s; margin-top: 10px;
+    }
+    .btn-outline:hover { background: #fce8f0; }
+
+    .upload-area {
+      border: 2px dashed #f0c0d4;
+      border-radius: 12px;
+      padding: 28px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      background: #fdf8fa;
+      margin: 12px 0;
+    }
+    .upload-area:hover, .upload-area.drag { border-color: var(--accent); background: #fce8f0; }
+    .upload-area i { font-size: 36px; color: var(--accent); opacity: 0.6; display: block; margin-bottom: 8px; }
+    .upload-area p { font-size: 0.82rem; color: var(--muted); }
+    .upload-area input { display: none; }
+
+    .upload-preview {
+      width: 100%; border-radius: 10px; margin-top: 10px;
+      display: none; object-fit: cover; max-height: 320px;
+    }
+    .upload-status {
+      font-size: 0.78rem; margin-top: 8px; padding: 6px 10px;
+      border-radius: 8px; display: none;
+    }
+    .upload-status.ok { background: #e0f5ee; color: var(--teal); }
+    .upload-status.err { background: #fde8ec; color: var(--danger); }
+    .upload-status.loading { background: #fdf3d8; color: var(--warn); }
+
+    .foto-real {
+      width: 100%; border-radius: 10px; object-fit: cover; max-height: 260px;
+    }
+    .foto-data { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
+
+    footer {
+      text-align: center;
+      padding: 30px 16px 0;
+      color: var(--muted);
+      font-size: 0.73rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-mark">
+    <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="2,16 7,16 10,9 13,22 16,13 19,18 22,16 26,16"
+        stroke="#c0527e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M14 6 C14 6 12 4 10.5 4 C9 4 8 5.2 8 6.5 C8 8.5 10 10 14 12 C18 10 20 8.5 20 6.5 C20 5.2 19 4 17.5 4 C16 4 14 6 14 6Z"
+        fill="#c0527e" opacity="0.85"/>
+    </svg>
+  </div>
+  <div class="header-text">
+    <h1><span>Lorena</span> · Saúde & Treino</h1>
+    <p><!-- ✏️ PERSONALIZAR: modelo do relógio -->Garmin · Check-in diário</p>
+  </div>
+  <div class="badge-updated" style="flex-direction:column;align-items:flex-end;gap:4px;">
+    <button id="btn-atualizar" onclick="dispararAtualizacao()" title="Atualizar dados do Garmin agora" style="display:flex;align-items:center;gap:5px;background:none;border:1px solid var(--border);border-radius:8px;padding:5px 10px;cursor:pointer;font-family:inherit;font-size:0.78rem;color:var(--accent);font-weight:600;">
+      <i class="ti ti-refresh" id="icon-refresh"></i>
+      <span id="badge-atualizado">Atualizando...</span>
+    </button>
+    <div style="font-size:0.7rem;color:var(--muted);font-weight:600;letter-spacing:0.5px;">
+      <span id="relogio-ao-vivo"></span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <a href="#hoje" class="active"><i class="ti ti-layout-dashboard"></i> Hoje</a>
+  <a href="#resumo"><i class="ti ti-brain"></i> Claude</a>
+  <a href="#ficha"><i class="ti ti-barbell"></i> Ficha</a>
+  <a href="#progresso"><i class="ti ti-camera"></i> Progresso</a>
+  <a href="#checkins"><i class="ti ti-calendar"></i> Check-ins</a>
+  <a href="#saude"><i class="ti ti-heart-rate-monitor"></i> Saúde</a>
+  <a href="#objetivos"><i class="ti ti-target"></i> Objetivos</a>
+  <a href="#regras"><i class="ti ti-list-check"></i> Regras</a>
+</nav>
+
+<main>
+
+  <!-- ALERTA DE TREINO -->
+  <div id="alerta-treino" style="display:none; margin:0 0 16px 0; border-radius:14px; padding:16px 18px; background:#fce8f0; border:1.5px solid #f0a8c0;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <i class="ti ti-bell-ringing" id="alerta-icon" style="font-size:24px;color:#c0527e;flex-shrink:0;"></i>
+      <div>
+        <div id="alerta-texto" style="font-weight:700;color:#c0527e;font-size:0.92rem;"></div>
+        <div id="alerta-sub" style="font-size:0.78rem;color:#9a5570;margin-top:2px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOJE -->
+  <section id="hoje">
+    <div class="section-title"><i class="ti ti-layout-dashboard"></i> Dados de hoje</div>
+
+    <!-- ORIENTAÇÃO EM DESTAQUE -->
+    <div class="orientacao-card yellow" id="orientacao-alert">
+      <div class="orientacao-icon-wrap" id="orientacao-icon-wrap">
+        <i class="ti ti-alert-triangle" id="orientacao-icon-ti" style="color:var(--warn);font-size:22px;"></i>
+      </div>
+      <div>
+        <div class="orientacao-titulo" id="orientacao-titulo">Carregando orientação...</div>
+        <div class="orientacao-texto" id="orientacao-texto">Buscando dados do Garmin para definir a intensidade do dia.</div>
+      </div>
+    </div>
+
+    <div class="grid grid-4" style="margin-bottom:10px;">
+      <div class="card purple">
+        <div class="card-label">Body Battery</div>
+        <div class="card-value" id="val-bb">–<span class="card-unit">/100</span></div>
+        <div class="card-sub" id="sub-bb">–</div>
+        <div class="mini-feedback yellow" id="fb-bb">–</div>
+      </div>
+      <div class="card pink">
+        <div class="card-label">Sono</div>
+        <div class="card-value" id="val-sono">–<span class="card-unit">h</span></div>
+        <div class="card-sub" id="sub-sono">–</div>
+        <div class="mini-feedback yellow" id="fb-sono">–</div>
+      </div>
+      <div class="card green">
+        <div class="card-label">FC Repouso</div>
+        <div class="card-value" id="val-fc">–<span class="card-unit">bpm</span></div>
+        <div class="mini-feedback yellow" id="fb-fc">–</div>
+      </div>
+      <div class="card orange">
+        <div class="card-label">Passos</div>
+        <div class="card-value" id="val-steps">–</div>
+        <div class="card-sub" id="sub-steps">–</div>
+        <div class="mini-feedback yellow" id="fb-steps">–</div>
+      </div>
+    </div>
+
+    <div class="grid grid-3" style="margin-bottom:14px;">
+      <div class="card yellow">
+        <div class="card-label">Saturação O₂ Mínima</div>
+        <div class="card-value" id="val-spo2">–<span class="card-unit">%</span></div>
+        <div class="card-sub" id="sub-spo2">–</div>
+        <div class="mini-feedback yellow" id="fb-spo2">–</div>
+      </div>
+      <div class="card purple">
+        <div class="card-label">Variab. Cardíaca (HRV)</div>
+        <div class="card-value" id="val-hrv">–<span class="card-unit">ms</span></div>
+        <div class="card-sub" id="sub-hrv">–</div>
+      </div>
+      <div class="card green">
+        <div class="card-label">Estresse</div>
+        <div class="card-value" id="val-estresse">–<span class="card-unit">/100</span></div>
+        <div class="card-sub">Médio do dia</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Passos</span><span id="bar-steps-label">– / –</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="bar-steps" style="width:0%;background:var(--orange);"></div></div>
+      </div>
+      <div class="progress-wrap" style="margin-top:10px;">
+        <div class="progress-label"><span>Score do sono</span><span id="bar-sono-label">– / 100</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="bar-sono" style="width:0%;background:var(--danger);"></div></div>
+      </div>
+      <div class="progress-wrap" style="margin-top:10px;">
+        <div class="progress-label"><span>Body Battery</span><span id="bar-bb-label">– / 100</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="bar-bb" style="width:0%;background:var(--accent);"></div></div>
+      </div>
+    </div>
+
+    <!-- SONO DETALHADO -->
+    <div style="margin-top:14px;">
+      <div style="font-size:0.7rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px;">Detalhes do sono</div>
+      <div class="grid grid-3">
+        <div class="card purple">
+          <div class="card-label">Sono profundo</div>
+          <div class="card-value" style="font-size:1.35rem;" id="sono-profundo">– min</div>
+          <div class="card-sub">Ideal: >60 min</div>
+        </div>
+        <div class="card pink">
+          <div class="card-label">Sono REM</div>
+          <div class="card-value" style="font-size:1.35rem;" id="sono-rem">– min</div>
+          <div class="card-sub">Ideal: 21–31%</div>
+        </div>
+        <div class="card orange">
+          <div class="card-label">Acordou</div>
+          <div class="card-value" style="font-size:1.35rem;" id="sono-acordou">–x</div>
+          <div class="card-sub">Ideal: 0–1x</div>
+        </div>
+      </div>
+      <div class="grid grid-2" style="margin-top:10px;">
+        <div class="card green">
+          <div class="card-label">SpO2 médio (sono)</div>
+          <div class="card-value" style="font-size:1.35rem;" id="spo2-sono">–%</div>
+        </div>
+        <div class="card yellow">
+          <div class="card-label">SpO2 mínimo (sono)</div>
+          <div class="card-value" style="font-size:1.35rem;" id="spo2-sono-min">–%</div>
+          <div class="card-sub">Monitorar apneia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUMO CLAUDE -->
+  <section id="resumo">
+    <div class="section-title"><i class="ti ti-brain"></i> Análise do Claude</div>
+
+    <!-- ✏️ PERSONALIZAR: esta seção é escrita manualmente (por você ou pelo Claude) com base
+         na leitura periódica dos dados. Os cards abaixo são placeholders de exemplo. -->
+    <div class="claude-box">
+      <div class="claude-header">
+        <div class="claude-avatar"><i class="ti ti-moon"></i></div>
+        <div>
+          <div class="claude-title">Análise da última noite</div>
+          <div class="claude-date">—</div>
+        </div>
+        <span class="tag yellow">Aguardando dados</span>
+      </div>
+      <div class="claude-frase" id="frase-sono">
+        "Assim que houver dados suficientes de sono, a análise da última noite aparece aqui."
+      </div>
+      <div class="claude-detalhe">
+        Esta frase é atualizada automaticamente pelo script (campo <code>frase_sono</code> em data.js).
+      </div>
+    </div>
+
+    <div class="claude-box">
+      <div class="claude-header">
+        <div class="claude-avatar"><i class="ti ti-chart-line"></i></div>
+        <div>
+          <div class="claude-title">Análise das últimas semanas</div>
+          <div class="claude-date">—</div>
+        </div>
+        <span class="tag yellow">Aguardando dados</span>
+      </div>
+      <div class="claude-frase">
+        "Depois de algumas semanas de uso, escreva aqui um resumo de tendências (sono, treino, recuperação)."
+      </div>
+      <div class="claude-detalhe">
+        Este bloco é texto fixo — edite manualmente conforme for observando padrões nos dados.
+      </div>
+    </div>
+
+    <div style="margin-top:14px;">
+      <div class="feedback-item yellow">
+        <i class="ti ti-info-circle"></i>
+        <div><strong>Pontos de destaque aparecerão aqui</strong> — conforme os dados forem se acumulando, adicione observações positivas e de atenção (ex: consistência de treino, qualidade do sono, FC de repouso).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FICHA -->
+  <section id="ficha">
+    <div class="section-title"><i class="ti ti-barbell"></i> Ficha semanal</div>
+
+    <!-- ✏️ PERSONALIZAR: ficha de treino — placeholders "Treino A" a "Treino G". Edite nomes,
+         exercícios, séries/repetições e o cardio de cada dia. Mantenha em sincronia com o
+         PLANO_SEMANA do update_dashboard.py (mesmos nomes de treino). -->
+    <div class="treino-day">
+      <div class="treino-day-header" onclick="toggle(this)">
+        <i class="ti ti-barbell"></i>
+        <div><div class="day-name">Segunda-feira</div><div class="day-desc">Treino A</div></div>
+        <span class="day-badge media">Média</span>
+      </div>
+      <div class="treino-day-body">
+        <table>
+          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th></tr>
+          <tr><td>Exercício 1</td><td>4x</td><td>10–12</td></tr>
+          <tr><td>Exercício 2</td><td>4x</td><td>12</td></tr>
+          <tr><td>Exercício 3</td><td>3x</td><td>12</td></tr>
+        </table>
+        <div class="cardio-info"><i class="ti ti-walk"></i> <strong>Cardio:</strong> a definir</div>
+      </div>
+    </div>
+
+    <div class="treino-day">
+      <div class="treino-day-header" onclick="toggle(this)">
+        <i class="ti ti-barbell"></i>
+        <div><div class="day-name">Terça-feira</div><div class="day-desc">Treino B</div></div>
+        <span class="day-badge media">Média</span>
+      </div>
+      <div class="treino-day-body">
+        <table>
+          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th></tr>
+          <tr><td>Exercício 1</td><td>4x</td><td>10–12</td></tr>
+          <tr><td>Exercício 2</td><td>3x</td><td>12</td></tr>
+          <tr><td>Exercício 3</td><td>3x</td><td>12</td></tr>
+        </table>
+        <div class="cardio-info"><i class="ti ti-bike"></i> <strong>Cardio:</strong> a definir</div>
+      </div>
+    </div>
+
+    <div class="treino-day">
+      <div class="treino-day-header" onclick="toggle(this)">
+        <i class="ti ti-barbell"></i>
+        <div><div class="day-name">Quarta-feira</div><div class="day-desc">Treino C</div></div>
+        <span class="day-badge media">Média</span>
+      </div>
+      <div class="treino-day-body">
+        <table>
+          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th></tr>
+          <tr><td>Exercício 1</td><td>4x</td><td>10–12</td></tr>
+          <tr><td>Exercício 2</td><td>4x</td><td>12</td></tr>
+          <tr><td>Exercício 3</td><td>3x</td><td>15</td></tr>
+        </table>
+        <div class="cardio-info"><i class="ti ti-walk"></i> <strong>Cardio:</strong> a definir</div>
+      </div>
+    </div>
+
+    <div class="treino-day">
+      <div class="treino-day-header" onclick="toggle(this)">
+        <i class="ti ti-barbell"></i>
+        <div><div class="day-name">Quinta-feira</div><div class="day-desc">Treino D</div></div>
+        <span class="day-badge media">Média</span>
+      </div>
+      <div class="treino-day-body">
+        <table>
+          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th></tr>
+          <tr><td>Exercício 1</td><td>4x</td><td>10–12</td></tr>
+          <tr><td>Exercício 2</td><td>3x</td><td>12</td></tr>
+          <tr><td>Exercício 3</td><td>3x</td><td>12</td></tr>
+        </table>
+        <div class="cardio-info"><i class="ti ti-bike"></i> <strong>Cardio:</strong> a definir</div>
+      </div>
+    </div>
+
+    <div class="treino-day">
+      <div class="treino-day-header" onclick="toggle(this)">
+        <i class="ti ti-barbell"></i>
+        <div><div class="day-name">Sexta-feira</div><div class="day-desc">Treino E</div></div>
+        <span class="day-badge alta">Alta</span>
+      </div>
+      <div class="treino-day-body">
+        <table>
+          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th></tr>
+          <tr><td>Exercício 1</td><td>4x</td><td>10–12</td></tr>
+          <tr><td>Exercício 2</td><td>4x</td><td>12</td></tr>
+          <tr><td>Exercício 3</td><td>3x</td><td>15 cada</td></tr>
+        </table>
+        <div class="cardio-info"><i class="ti ti-run"></i> <strong>Cardio:</strong> a definir</div>
+      </div>
+    </div>
+
+    <div class="treino-day">
+      <div class="treino-day-header" onclick="toggle(this)">
+        <i class="ti ti-leaf"></i>
+        <div><div class="day-name">Sábado</div><div class="day-desc">Descanso ativo</div></div>
+        <span class="day-badge baixa">Baixa</span>
+      </div>
+      <div class="treino-day-body">
+        <div class="alert green" style="margin-top:8px;">
+          <i class="ti ti-check"></i>
+          <div><strong>Cardio leve.</strong> Bike leve ou caminhada ao ar livre · FC abaixo de 120 bpm · 20–30 min</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="treino-day">
+      <div class="treino-day-header" onclick="toggle(this)">
+        <i class="ti ti-barbell"></i>
+        <div><div class="day-name">Domingo</div><div class="day-desc">Treino F / Zona 2</div></div>
+        <span class="day-badge baixa">Baixa</span>
+      </div>
+      <div class="treino-day-body">
+        <table>
+          <tr><th>Exercício</th><th>Séries</th><th>Repetições</th></tr>
+          <tr><td>Exercício 1</td><td>4x</td><td>10–12</td></tr>
+          <tr><td>Exercício 2</td><td>3x</td><td>12</td></tr>
+        </table>
+        <div class="cardio-info"><i class="ti ti-walk"></i> <strong>Cardio:</strong> a definir</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PROGRESSO CORPORAL -->
+  <section id="progresso">
+    <div class="section-title"><i class="ti ti-camera"></i> Progresso corporal</div>
+
+    <!-- META -->
+    <div class="meta-corpo">
+      <div class="meta-corpo-header">
+        <i class="ti ti-target-arrow"></i>
+        <div>
+          <div class="meta-corpo-title">Meta de corpo</div>
+          <!-- ✏️ PERSONALIZAR -->
+          <div class="meta-corpo-sub">Descreva aqui o foco principal (ex: definição, ganho de massa, performance)</div>
+        </div>
+      </div>
+      <div class="meta-box">
+        <strong>Objetivo principal:</strong> descreva o objetivo em uma frase.<br><br>
+        <strong>Como medir progresso:</strong> foto semanal do grupo treinado no dia · análise visual quinzenal · medidas mensais.
+      </div>
+    </div>
+
+    <!-- INSTRUCAO -->
+    <div class="instrucao-foto">
+      <strong>Como funciona a análise de fotos:</strong><br>
+      Após cada treino, você pode me enviar uma foto do grupo muscular trabalhado no dia. Eu analiso a evolução comparando com registros anteriores — postura, simetria, definição visível, retenção de líquido.<br><br>
+      <strong>Dica:</strong> foto sempre no mesmo horário, mesma iluminação, mesma posição. Lateral e frontal para membros inferiores.
+    </div>
+
+    <!-- CONFIG TOKEN -->
+    <div id="upload-config" class="upload-setup" style="display:none">
+      <h3><i class="ti ti-key" style="vertical-align:-2px;margin-right:6px;"></i>Configure o upload de fotos</h3>
+      <p style="color:var(--muted);margin-bottom:10px;">Para salvar fotos diretamente no seu repositório, insira um <strong>Personal Access Token</strong> do GitHub com permissão <code>contents: write</code> no repositório <code>saude-treino</code>.</p>
+      <p style="color:var(--muted);margin-bottom:6px;">Acesse: GitHub → Settings → Developer settings → Personal access tokens (classic) → <em>Generate new token</em> → marque <strong>repo</strong>.</p>
+      <input type="password" id="gh-token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+      <br>
+      <button class="btn-rosa" onclick="salvarToken()"><i class="ti ti-check"></i> Salvar token</button>
+      <button class="btn-outline" onclick="document.getElementById('upload-config').style.display='none'" style="margin-left:8px;">Cancelar</button>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+      <p style="font-size:0.8rem;color:var(--muted);margin:0;">Fotos salvas no GitHub · ficam no histórico permanentemente</p>
+      <button class="btn-outline" onclick="abrirConfig()" style="font-size:0.75rem;padding:6px 12px;margin:0;">
+        <i class="ti ti-settings"></i> Configurar token
+      </button>
+    </div>
+
+    <!-- GRUPOS MUSCULARES -->
+    <div class="grupo-grid">
+
+      <div class="grupo-card">
+        <div class="grupo-header">
+          <i class="ti ti-legs"></i>
+          <div>
+            <div class="grupo-nome">Glúteo</div>
+            <div class="grupo-data" id="data-gluteo">Sem registro</div>
+          </div>
+        </div>
+        <div class="upload-area" onclick="triggerUpload('gluteo')" ondragover="dragOver(event,this)" ondragleave="dragLeave(this)" ondrop="dropFile(event,'gluteo',this)">
+          <i class="ti ti-camera-plus"></i>
+          <p>Toque para escolher ou arraste uma foto</p>
+          <input type="file" id="file-gluteo" accept="image/*" capture="environment" onchange="uploadFoto('gluteo',this)">
+        </div>
+        <img id="img-gluteo" class="upload-preview" alt="Glúteo">
+        <p class="foto-data" id="legenda-gluteo"></p>
+        <div class="upload-status" id="status-gluteo"></div>
+        <div class="analise-placeholder">Nenhuma análise ainda. Envie uma foto para acompanhar evolução de definição, simetria e retenção de líquido.</div>
+      </div>
+
+      <div class="grupo-card">
+        <div class="grupo-header">
+          <i class="ti ti-legs"></i>
+          <div>
+            <div class="grupo-nome">Quadríceps + Interno</div>
+            <div class="grupo-data" id="data-quad">Sem registro</div>
+          </div>
+        </div>
+        <div class="upload-area" onclick="triggerUpload('quad')" ondragover="dragOver(event,this)" ondragleave="dragLeave(this)" ondrop="dropFile(event,'quad',this)">
+          <i class="ti ti-camera-plus"></i>
+          <p>Toque para escolher ou arraste uma foto</p>
+          <input type="file" id="file-quad" accept="image/*" capture="environment" onchange="uploadFoto('quad',this)">
+        </div>
+        <img id="img-quad" class="upload-preview" alt="Quadríceps">
+        <p class="foto-data" id="legenda-quad"></p>
+        <div class="upload-status" id="status-quad"></div>
+        <div class="analise-placeholder">Nenhuma análise ainda. Envie uma foto para acompanhar definição e redução de gordura localizada.</div>
+      </div>
+
+      <div class="grupo-card">
+        <div class="grupo-header">
+          <i class="ti ti-legs"></i>
+          <div>
+            <div class="grupo-nome">Posterior + Panturrilha</div>
+            <div class="grupo-data" id="data-post">Sem registro</div>
+          </div>
+        </div>
+        <div class="upload-area" onclick="triggerUpload('posterior')" ondragover="dragOver(event,this)" ondragleave="dragLeave(this)" ondrop="dropFile(event,'posterior',this)">
+          <i class="ti ti-camera-plus"></i>
+          <p>Toque para escolher ou arraste uma foto</p>
+          <input type="file" id="file-posterior" accept="image/*" capture="environment" onchange="uploadFoto('posterior',this)">
+        </div>
+        <img id="img-posterior" class="upload-preview" alt="Posterior">
+        <p class="foto-data" id="legenda-posterior"></p>
+        <div class="upload-status" id="status-posterior"></div>
+        <div class="analise-placeholder">Nenhuma análise ainda. Envie uma foto para acompanhar definição de posterior e panturrilha.</div>
+      </div>
+
+      <div class="grupo-card">
+        <div class="grupo-header">
+          <i class="ti ti-arm"></i>
+          <div>
+            <div class="grupo-nome">Superior (costas, ombro)</div>
+            <div class="grupo-data" id="data-sup">Sem registro</div>
+          </div>
+        </div>
+        <div class="upload-area" onclick="triggerUpload('superior')" ondragover="dragOver(event,this)" ondragleave="dragLeave(this)" ondrop="dropFile(event,'superior',this)">
+          <i class="ti ti-camera-plus"></i>
+          <p>Toque para escolher ou arraste uma foto</p>
+          <input type="file" id="file-superior" accept="image/*" capture="environment" onchange="uploadFoto('superior',this)">
+        </div>
+        <img id="img-superior" class="upload-preview" alt="Superior">
+        <p class="foto-data" id="legenda-superior"></p>
+        <div class="upload-status" id="status-superior"></div>
+        <div class="analise-placeholder">Nenhuma análise ainda. Envie uma foto para acompanhar postura e definição de costas/ombro.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CHECK-INS -->
+  <section id="checkins">
+    <div class="section-title"><i class="ti ti-calendar"></i> Histórico de check-ins</div>
+
+    <!-- ✏️ PERSONALIZAR: adicione um bloco .checkin por dia relevante, com data, tags e resumo -->
+    <div class="checkin">
+      <div class="checkin-date">—</div>
+      <div class="checkin-title">Nenhum check-in registrado ainda</div>
+      <div class="checkin-body">
+        Os check-ins aparecerão aqui conforme forem sendo adicionados manualmente, com base nos dados do dia.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SAÚDE -->
+  <section id="saude">
+    <div class="section-title"><i class="ti ti-heart-rate-monitor"></i> Pontos de saúde</div>
+
+    <!-- ✏️ PERSONALIZAR: pontos de saúde surgem da leitura periódica dos dados. Adicione blocos
+         .alert (red/yellow/green) conforme padrões forem observados (sono, SpO2, FC, VO2 max etc). -->
+    <div class="alert yellow">
+      <i class="ti ti-info-circle"></i>
+      <div><strong>Nenhum ponto de saúde registrado ainda</strong>
+      Conforme os dados forem se acumulando, adicione aqui observações relevantes sobre sono, SpO2, frequência cardíaca ou outros indicadores.</div>
+    </div>
+
+  </section>
+
+  <!-- OBJETIVOS -->
+  <section id="objetivos">
+    <div class="section-title"><i class="ti ti-target"></i> Objetivos</div>
+
+    <!-- ✏️ PERSONALIZAR: substitua pelos objetivos reais (ex: performance, composição corporal, saúde geral) -->
+    <div class="objetivo">
+      <i class="ti ti-target-arrow"></i>
+      <div>
+        <div class="objetivo-text">Objetivo 1</div>
+        <div class="objetivo-sub">Descreva a meta e como medi-la</div>
+      </div>
+    </div>
+    <div class="objetivo">
+      <i class="ti ti-target-arrow"></i>
+      <div>
+        <div class="objetivo-text">Objetivo 2</div>
+        <div class="objetivo-sub">Descreva a meta e como medi-la</div>
+      </div>
+    </div>
+    <div class="objetivo">
+      <i class="ti ti-heart"></i>
+      <div>
+        <div class="objetivo-text">Saúde geral</div>
+        <div class="objetivo-sub">Descreva o foco de saúde geral</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGRAS -->
+  <section id="regras">
+    <div class="section-title"><i class="ti ti-list-check"></i> Regras do check-in diário</div>
+
+    <!-- ✏️ PERSONALIZAR: as duas primeiras regras já refletem a lógica do update_dashboard.py;
+         edite ou adicione outras conforme suas próprias regras de treino -->
+    <div class="regra">
+      <div class="regra-num">1</div>
+      <div><strong>Body Battery abaixo de 30</strong> → dia vira leve, sem negociação</div>
+    </div>
+    <div class="regra">
+      <div class="regra-num">2</div>
+      <div><strong>Treinos intensos após 19h</strong> → viram leves automaticamente</div>
+    </div>
+    <div class="regra">
+      <div class="regra-num">3</div>
+      <div><strong>Cardio sempre depois da musculação</strong> → nunca antes</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Dados do Garmin · Atualizado automaticamente a cada hora · Powered by Claude
+</footer>
+
+<script>
+  function toggle(header) {
+    const body = header.nextElementSibling;
+    body.classList.toggle('open');
+  }
+
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+
+  function set(id, val) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val;
+  }
+  function setClass(id, cls, base) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.className = (base || '') + ' ' + cls;
+    }
+  }
+  function setBar(id, pct, color) {
+    const el = document.getElementById(id);
+    if (el) { el.style.width = Math.min(pct, 100) + '%'; el.style.background = color; }
+  }
+
+  const orientacaoIcons = { green: 'ti-circle-check', yellow: 'ti-alert-triangle', red: 'ti-moon-stars' };
+  const orientacaoColors = { green: 'var(--teal)', yellow: 'var(--warn)', red: 'var(--danger)' };
+
+  if (typeof GARMIN !== 'undefined') {
+    const G = GARMIN;
+
+    set('badge-atualizado', G.atualizado);
+
+    // Orientação do dia
+    const oriCard = document.getElementById('orientacao-alert');
+    if (oriCard) oriCard.className = 'orientacao-card ' + G.orientacao_cor;
+    const oriIconWrap = document.getElementById('orientacao-icon-wrap');
+    if (oriIconWrap) oriIconWrap.className = 'orientacao-icon-wrap';
+    const oriIconEl = document.getElementById('orientacao-icon-ti');
+    if (oriIconEl) {
+      oriIconEl.className = 'ti ' + (orientacaoIcons[G.orientacao_cor] || 'ti-alert-triangle');
+      oriIconEl.style.color = orientacaoColors[G.orientacao_cor] || 'var(--warn)';
+    }
+    set('orientacao-titulo', G.orientacao_titulo);
+    set('orientacao-texto', G.orientacao_texto);
+
+    // Resumo Claude
+    set('frase-sono', '"' + G.frase_sono + '"');
+
+    // Cards
+    set('val-bb', G.body_battery);
+    set('sub-bb', 'Máx: ' + G.bb_max + ' · Mín: ' + G.bb_min);
+    set('fb-bb', G.bb_feedback_msg);
+    setClass('fb-bb', G.bb_feedback_cor, 'mini-feedback');
+
+    set('val-sono', G.sono_h);
+    set('sub-sono', 'Score ' + G.sono_score + ' · ' + G.sono_qualidade);
+    set('fb-sono', G.sono_feedback_msg);
+    setClass('fb-sono', G.sono_feedback_cor, 'mini-feedback');
+
+    set('val-fc', G.fc_repouso);
+    set('fb-fc', G.fc_feedback_msg);
+    setClass('fb-fc', G.fc_feedback_cor, 'mini-feedback');
+
+    set('val-steps', G.steps);
+    set('sub-steps', 'Meta: ' + G.steps_goal);
+    set('fb-steps', G.steps_feedback_msg);
+    setClass('fb-steps', G.steps_feedback_cor, 'mini-feedback');
+
+    set('val-spo2', G.spo2_min);
+    set('sub-spo2', 'Média: ' + G.spo2_media + '%');
+    set('fb-spo2', G.spo2_feedback_msg);
+    setClass('fb-spo2', G.spo2_feedback_cor, 'mini-feedback');
+
+    set('val-hrv', G.hrv_val);
+    set('sub-hrv', 'Status: ' + G.hrv_status);
+    set('val-estresse', G.estresse);
+
+    // Barras
+    setBar('bar-steps', G.steps_pct, 'var(--orange)');
+    set('bar-steps-label', G.steps + ' / ' + G.steps_goal);
+
+    const ss = parseInt(G.sono_score) || 0;
+    setBar('bar-sono', ss, ss >= 80 ? 'var(--teal)' : ss >= 65 ? 'var(--warn)' : 'var(--danger)');
+    set('bar-sono-label', G.sono_score + ' / 100');
+
+    const bb = parseInt(G.body_battery) || 0;
+    setBar('bar-bb', bb, bb >= 60 ? 'var(--teal)' : bb >= 40 ? 'var(--accent)' : 'var(--danger)');
+    set('bar-bb-label', G.body_battery + ' / 100');
+
+    // Sono detalhado
+    set('sono-profundo', G.sono_profundo + ' min');
+    set('sono-rem', G.sono_rem + ' min');
+    set('sono-acordou', G.acordou + 'x');
+    set('spo2-sono', G.spo2_sono + '%');
+    set('spo2-sono-min', G.spo2_sono_min + '%');
+  }
+</script>
+
+<script>
+// ─── DATA/HORA DINÂMICA ─────────────────────────────────────────────────────
+(function() {
+  const DIAS = ["Domingo","Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado"];
+  const MESES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+  const now = new Date();
+  const dia = String(now.getDate()).padStart(2,"0");
+  const mes = String(now.getMonth()+1).padStart(2,"0");
+  const ano = now.getFullYear();
+  const dow = DIAS[now.getDay()];
+  const h = String(now.getHours()).padStart(2,"0");
+  const m = String(now.getMinutes()).padStart(2,"0");
+
+  // Relógio ao vivo no topo
+  const relogio = document.getElementById("relogio-ao-vivo");
+  if (relogio) {
+    function tick() {
+      const n = new Date();
+      relogio.textContent = `${String(n.getHours()).padStart(2,"0")}:${String(n.getMinutes()).padStart(2,"0")}:${String(n.getSeconds()).padStart(2,"0")}`;
+    }
+    tick(); setInterval(tick, 1000);
+  }
+})();
+
+// ─── ALERTA DE TREINO ────────────────────────────────────────────────────────
+(function() {
+  if (typeof GARMIN === "undefined") return;
+  const alerta = GARMIN.alerta_treino || "";
+  if (!alerta) return;
+
+  const box = document.getElementById("alerta-treino");
+  const txt = document.getElementById("alerta-texto");
+  const sub = document.getElementById("alerta-sub");
+  const ico = document.getElementById("alerta-icon");
+
+  if (box && txt) {
+    txt.textContent = alerta;
+    const urgente = GARMIN.alerta_treino_urgente;
+    if (urgente) {
+      box.style.background = "#fde8ec";
+      box.style.borderColor = "#f08090";
+      ico.style.color = "#c0304a";
+      sub.textContent = "Está ficando tarde! Academia fecha logo — não pula não 💪";
+    } else {
+      sub.textContent = "Atualizado há menos de 1h com base nos seus dados Garmin.";
+    }
+    box.style.display = "block";
+
+    // Notificação do navegador
+    if ("Notification" in window) {
+      Notification.requestPermission().then(perm => {
+        if (perm === "granted") {
+          new Notification("Lorena — Lembrete de treino 💪", {
+            body: alerta,
+            tag: "treino-lorena",
+            renotify: true,
+          });
+        }
+      });
+    }
+  }
+})();
+
+// ─── BOTÃO ATUALIZAR ─────────────────────────────────────────────────────────
+async function dispararAtualizacao() {
+  const token = getToken(); // reutiliza o token do GitHub já salvo
+  if (!token) {
+    abrirConfig();
+    alert("Configure o token do GitHub primeiro (mesmo usado para fotos).");
+    return;
+  }
+
+  const btn = document.getElementById("btn-atualizar");
+  const icon = document.getElementById("icon-refresh");
+  const label = document.getElementById("badge-atualizado");
+
+  btn.disabled = true;
+  icon.style.animation = "spin 1s linear infinite";
+  label.textContent = "Disparando...";
+
+  try {
+    const res = await fetch(
+      `https://api.github.com/repos/${REPO}/actions/workflows/update.yml/dispatches`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: "token " + token,
+          "Content-Type": "application/json",
+          Accept: "application/vnd.github+json",
+        },
+        body: JSON.stringify({ ref: BRANCH }),
+      }
+    );
+
+    if (res.status === 204) {
+      label.textContent = "Rodando... (~1 min)";
+      icon.style.animation = "spin 1s linear infinite";
+      // Aguarda ~75s e recarrega a página para pegar o data.js novo
+      setTimeout(() => {
+        label.textContent = "Recarregando...";
+        location.reload();
+      }, 75000);
+    } else {
+      const err = await res.json().catch(() => ({}));
+      label.textContent = "Erro: " + (err.message || res.status);
+      btn.disabled = false;
+      icon.style.animation = "";
+    }
+  } catch (e) {
+    label.textContent = "Sem conexão";
+    btn.disabled = false;
+    icon.style.animation = "";
+  }
+}
+
+// ─── UPLOAD DE FOTOS ────────────────────────────────────────────────────────
+const REPO = "polianeporto/saude-treino-lorena";
+const BRANCH = "main";
+const GH_API = "https://api.github.com";
+const GRUPOS = ["gluteo","quad","posterior","superior"];
+
+function getToken() { return localStorage.getItem("gh_token") || ""; }
+function salvarToken() {
+  const t = document.getElementById("gh-token-input").value.trim();
+  if (!t) return alert("Insira o token.");
+  localStorage.setItem("gh_token", t);
+  document.getElementById("upload-config").style.display = "none";
+  alert("Token salvo! Agora pode enviar fotos.");
+}
+function abrirConfig() {
+  const cfg = document.getElementById("upload-config");
+  cfg.style.display = cfg.style.display === "none" ? "block" : "none";
+  const t = getToken();
+  if (t) document.getElementById("gh-token-input").value = t;
+}
+
+function triggerUpload(grupo) {
+  document.getElementById("file-" + grupo).click();
+}
+
+function setStatus(grupo, msg, tipo) {
+  const el = document.getElementById("status-" + grupo);
+  el.textContent = msg;
+  el.className = "upload-status " + tipo;
+  el.style.display = msg ? "block" : "none";
+}
+
+function showPreview(grupo, dataUrl, legenda) {
+  const img = document.getElementById("img-" + grupo);
+  img.src = dataUrl;
+  img.style.display = "block";
+  const leg = document.getElementById("legenda-" + grupo);
+  if (leg) { leg.textContent = legenda; }
+  const dataEl = document.getElementById("data-" + grupo);
+  if (dataEl) { dataEl.textContent = legenda; }
+  localStorage.setItem("foto_" + grupo, dataUrl);
+  localStorage.setItem("foto_" + grupo + "_legenda", legenda);
+}
+
+function loadSavedPhotos() {
+  GRUPOS.forEach(g => {
+    const saved = localStorage.getItem("foto_" + g);
+    const leg   = localStorage.getItem("foto_" + g + "_legenda") || "";
+    if (saved) showPreview(g, saved, leg);
+  });
+}
+
+function toBase64(file) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = () => res(r.result.split(",")[1]);
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
+}
+
+async function uploadFoto(grupo, input) {
+  const file = input.files[0];
+  if (!file) return;
+  const token = getToken();
+  if (!token) {
+    abrirConfig();
+    return;
+  }
+
+  const now = new Date();
+  const pad = n => String(n).padStart(2, "0");
+  const dateStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+  const timeStr = `${pad(now.getHours())}${pad(now.getMinutes())}`;
+  const ext = file.name.split(".").pop() || "jpg";
+  const path = `photos/${grupo}/${dateStr}_${timeStr}.${ext}`;
+  const legenda = `Enviada em ${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()} às ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
+  setStatus(grupo, "Enviando foto…", "loading");
+
+  try {
+    const b64 = await toBase64(file);
+
+    // show preview immediately
+    const dataUrl = URL.createObjectURL(file);
+    showPreview(grupo, dataUrl, legenda);
+
+    // check if file already exists (to get SHA for update)
+    let sha = undefined;
+    try {
+      const check = await fetch(`${GH_API}/repos/${REPO}/contents/${path}`, {
+        headers: { Authorization: "token " + token }
+      });
+      if (check.ok) { const j = await check.json(); sha = j.sha; }
+    } catch {}
+
+    const body = {
+      message: `foto: progresso ${grupo} ${dateStr}`,
+      content: b64,
+      branch: BRANCH,
+    };
+    if (sha) body.sha = sha;
+
+    const res = await fetch(`${GH_API}/repos/${REPO}/contents/${path}`, {
+      method: "PUT",
+      headers: {
+        Authorization: "token " + token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (res.ok) {
+      setStatus(grupo, "✓ Foto salva no repositório!", "ok");
+      // persist base64 preview
+      const reader = new FileReader();
+      reader.onload = () => {
+        localStorage.setItem("foto_" + grupo, reader.result);
+        localStorage.setItem("foto_" + grupo + "_legenda", legenda);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      const err = await res.json();
+      setStatus(grupo, "Erro: " + (err.message || res.status), "err");
+    }
+  } catch (e) {
+    setStatus(grupo, "Erro de conexão: " + e.message, "err");
+  }
+}
+
+function dragOver(e, el) { e.preventDefault(); el.classList.add("drag"); }
+function dragLeave(el) { el.classList.remove("drag"); }
+function dropFile(e, grupo, el) {
+  e.preventDefault();
+  el.classList.remove("drag");
+  const file = e.dataTransfer.files[0];
+  if (!file) return;
+  const fakeInput = { files: [file] };
+  uploadFoto(grupo, fakeInput);
+}
+
+loadSavedPhotos();
+</script>
+
+</body>
+</html>
