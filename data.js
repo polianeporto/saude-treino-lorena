@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "28/07/2026 às 12:10h",
+  "atualizado": "28/07/2026 às 12:13h",
   "hoje": "2026-07-28",
   "body_battery": 56,
   "bb_max": 85,
@@ -46,6 +46,6 @@ const GARMIN = {
   "alerta_treino": "",
   "alerta_treino_urgente": false,
   "hora_brasilia": 12,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (28/07/2026 às 12:10h)\n\n🏋️ Treino do dia: Treino B — MMSS Superior completo\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 56/100 — ⚡ Moderado — cuidado na intensidade\n😴 Sono: 3.3h · score 46 — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 57 bpm — ✅ Excelente\n🚶 Passos: 2583/8550 (30%) — ⚡ Continue se movendo\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 16/100\n🔋 HRV: 48 (NONE)\n\nOrientação automática: Dia de descanso ativo — Body Battery ou sono muito baixos. Bike leve 20–30 min · FC abaixo de 120 · Sem musculação pesada hoje.",
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (28/07/2026 às 12:13h)\n\n🏋️ Treino do dia: Treino B — MMSS Superior completo\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 56/100 — ⚡ Moderado — cuidado na intensidade\n😴 Sono: 3.3h · score 46 — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 57 bpm — ✅ Excelente\n🚶 Passos: 2583/8550 (30%) — ⚡ Continue se movendo\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 16/100\n🔋 HRV: 48 (NONE)\n\nOrientação automática: Dia de descanso ativo — Body Battery ou sono muito baixos. Bike leve 20–30 min · FC abaixo de 120 · Sem musculação pesada hoje.",
   "workout_agendado_data": "2026-07-28"
 };
