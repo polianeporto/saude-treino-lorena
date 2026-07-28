@@ -182,6 +182,9 @@ sleep_raw = client.get_sleep_data(today)
 sleep = sleep_raw.get("dailySleepDTO", {}) or {}
 scores = sleep.get("sleepScores", {}) or {}
 
+# 🔎 DEBUG TEMPORÁRIO: confirmar nomes exatos dos campos de calorias — remover depois
+print("DEBUG calorias em stats:", {k: v for k, v in stats.items() if "calor" in k.lower() or "kilo" in k.lower()})
+
 try:
     hrv = client.get_hrv_data(today)
     hrv_summary = (hrv or {}).get("hrvSummary", {}) or {}
