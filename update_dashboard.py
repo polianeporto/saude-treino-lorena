@@ -182,6 +182,10 @@ sleep_raw = client.get_sleep_data(today)
 sleep = sleep_raw.get("dailySleepDTO", {}) or {}
 scores = sleep.get("sleepScores", {}) or {}
 
+# 🔎 DEBUG TEMPORÁRIO: investigar por que o SpO2 não aparece — remover depois
+print("DEBUG spo2 em stats:", {k: v for k, v in stats.items() if "spo2" in k.lower()})
+print("DEBUG spo2 em sleep:", {k: v for k, v in sleep.items() if "spo2" in k.lower()})
+
 try:
     hrv = client.get_hrv_data(today)
     hrv_summary = (hrv or {}).get("hrvSummary", {}) or {}
