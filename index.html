@@ -652,6 +652,18 @@
       </div>
     </div>
 
+    <!-- COMPARADO COM ONTEM (gerado automaticamente todo dia) -->
+    <div class="claude-box">
+      <div class="claude-header">
+        <div class="claude-avatar"><i class="ti ti-chart-line"></i></div>
+        <div>
+          <div class="claude-title">Comparado com ontem</div>
+          <div class="claude-date" id="analise-diaria-data">—</div>
+        </div>
+      </div>
+      <div class="claude-detalhe" id="analise-diaria-texto" style="white-space:pre-line;">Ainda não há dados de ontem para comparar.</div>
+    </div>
+
     <!-- RESUMO PARA O PERSONAL -->
     <div class="card" style="margin-bottom:16px;">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap;">
@@ -778,23 +790,6 @@
       </div>
       <div class="claude-detalhe">
         Esta frase é atualizada automaticamente pelo script (campo <code>frase_sono</code> em data.js).
-      </div>
-    </div>
-
-    <div class="claude-box">
-      <div class="claude-header">
-        <div class="claude-avatar"><i class="ti ti-chart-line"></i></div>
-        <div>
-          <div class="claude-title">Análise das últimas semanas</div>
-          <div class="claude-date">—</div>
-        </div>
-        <span class="tag yellow">Aguardando dados</span>
-      </div>
-      <div class="claude-frase">
-        "Depois de algumas semanas de uso, escreva aqui um resumo de tendências (sono, treino, recuperação)."
-      </div>
-      <div class="claude-detalhe">
-        Este bloco é texto fixo — edite manualmente conforme for observando padrões nos dados.
       </div>
     </div>
 
@@ -1300,6 +1295,10 @@
 
     // Resumo para o personal
     if (G.resumo_personal) set('resumo-personal-texto', G.resumo_personal);
+
+    // Comparado com ontem (análise diária automática)
+    set('analise-diaria-data', G.hoje || '—');
+    if (G.analise_diaria) set('analise-diaria-texto', G.analise_diaria);
 
     // Cards
     set('val-bb', G.body_battery);

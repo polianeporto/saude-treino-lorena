@@ -307,9 +307,10 @@ tipo_esperado_hoje = treino_hoje.get("tipo", "")
 # Cardio (esteira/escada) é diário, então o lembrete é sempre depois do treino/musculação
 lembrar_apos = 17 if tipo_esperado_hoje == "musculacao" else 15
 
-# Lê o data.js da execução anterior só para saber se o treino de hoje já foi
-# agendado no Garmin (evita reagendar toda hora / a cada clique em "Atualizar")
+# Lê o data.js da execução anterior — usado para (1) saber se o treino de hoje já
+# foi agendado no Garmin e (2) montar a comparação automática "comparado com ontem"
 workout_agendado_data = None
+_dados_anteriores = None
 try:
     with open("data.js", encoding="utf-8") as f:
         _conteudo_anterior = f.read()
@@ -319,6 +320,7 @@ try:
         workout_agendado_data = _dados_anteriores.get("workout_agendado_data")
 except Exception:
     workout_agendado_data = None
+    _dados_anteriores = None
 
 # Envia (uma vez) e agenda (uma vez por dia) o treino de força no Garmin Connect
 if letra_hoje in NOMES_TREINO and workout_agendado_data != today:
@@ -331,6 +333,51 @@ if letra_hoje in NOMES_TREINO and workout_agendado_data != today:
             print(f"   Treino {letra_hoje} agendado no calendário do Garmin para {today}")
     except Exception as e:
         print(f"   Aviso: não foi possível agendar o treino no Garmin — {e}")
+
+# ── Comparação automática "comparado com ontem" ─────────────────────────────
+# Guarda um retrato dos números de ontem (métricas, não os textos) para comparar
+# com hoje. Só troca o retrato quando o dia muda de fato — assim, mesmo rodando
+# várias vezes no mesmo dia, a comparação continua sendo "hoje vs. ontem" e não
+# "agora vs. a última execução de há uma hora".
+CAMPOS_COMPARAVEIS = ["body_battery", "sono_h", "sono_score", "fc_repouso", "steps", "estresse"]
+ontem_snapshot = None
+if _dados_anteriores:
+    if _dados_anteriores.get("hoje") != today:
+        # virou o dia: o que tínhamos até agora passa a ser o retrato de "ontem"
+        ontem_snapshot = {c: _dados_anteriores.get(c) for c in CAMPOS_COMPARAVEIS}
+    else:
+        # ainda é hoje: mantém o retrato de ontem que já estava salvo
+        ontem_snapshot = _dados_anteriores.get("ontem_snapshot")
+
+
+def _comparar_metrica(nome, valor_hoje, valor_ontem, unidade="", pior_se_maior=False):
+    try:
+        h = float(valor_hoje)
+        o = float(valor_ontem)
+    except (TypeError, ValueError):
+        return None
+    if h == o:
+        return f"• {nome}: estável em {valor_hoje}{unidade}"
+    subiu = h > o
+    melhorou = (not subiu) if pior_se_maior else subiu
+    seta = "📈" if subiu else "📉"
+    palavra = "melhorou" if melhorou else "piorou"
+    return f"• {nome}: {seta} de {valor_ontem} para {valor_hoje}{unidade} ({palavra} em relação a ontem)"
+
+
+if ontem_snapshot:
+    linhas = [
+        _comparar_metrica("Body Battery", body_battery, ontem_snapshot.get("body_battery")),
+        _comparar_metrica("Sono", sono_h, ontem_snapshot.get("sono_h"), "h"),
+        _comparar_metrica("Score do sono", sono_score, ontem_snapshot.get("sono_score")),
+        _comparar_metrica("FC repouso", fc_repouso, ontem_snapshot.get("fc_repouso"), " bpm", pior_se_maior=True),
+        _comparar_metrica("Passos", steps, ontem_snapshot.get("steps")),
+        _comparar_metrica("Estresse", estresse, ontem_snapshot.get("estresse"), pior_se_maior=True),
+    ]
+    linhas = [l for l in linhas if l]
+    analise_diaria = "\n".join(linhas) if linhas else "Ainda não há dados suficientes de ontem para comparar."
+else:
+    analise_diaria = "Ainda não há dados de ontem para comparar — a partir de amanhã essa análise aparece aqui."
 
 hora_brasilia = hora_atual  # now_dt já está em horário de Brasília (ver BRASILIA_TZ acima)
 
@@ -444,6 +491,8 @@ data = {
     "hora_brasilia": hora_brasilia,
     "resumo_personal": resumo_personal,
     "workout_agendado_data": workout_agendado_data,
+    "analise_diaria": analise_diaria,
+    "ontem_snapshot": ontem_snapshot,
 }
 
 with open("data.js", "w", encoding="utf-8") as f:
