@@ -182,9 +182,6 @@ sleep_raw = client.get_sleep_data(today)
 sleep = sleep_raw.get("dailySleepDTO", {}) or {}
 scores = sleep.get("sleepScores", {}) or {}
 
-# 🔎 DEBUG TEMPORÁRIO: confirmar nomes exatos dos campos de calorias — remover depois
-print("DEBUG calorias em stats:", {k: v for k, v in stats.items() if "calor" in k.lower() or "kilo" in k.lower()})
-
 try:
     hrv = client.get_hrv_data(today)
     hrv_summary = (hrv or {}).get("hrvSummary", {}) or {}
@@ -205,7 +202,9 @@ fc_repouso = safe_get(stats, "restingHeartRate", "--")
 estresse = safe_get(stats, "averageStressLevel", "--")
 spo2_min = safe_get(stats, "lowestSpo2", "--")
 spo2_media = safe_get(stats, "averageSpo2", "--")
-calorias = safe_get(stats, "activeKilocalories", "--")
+calorias_total = safe_get(stats, "totalKilocalories", "--")
+calorias_ativas = safe_get(stats, "activeKilocalories", "--")
+calorias_repouso = safe_get(stats, "bmrKilocalories", "--")
 
 sono_h = round(safe_get(sleep, "sleepTimeSeconds", 0) / 3600, 1)
 overall_score = scores.get("overall", {}) or {}
@@ -342,7 +341,7 @@ if letra_hoje in NOMES_TREINO and workout_agendado_data != today:
 # com hoje. Só troca o retrato quando o dia muda de fato — assim, mesmo rodando
 # várias vezes no mesmo dia, a comparação continua sendo "hoje vs. ontem" e não
 # "agora vs. a última execução de há uma hora".
-CAMPOS_COMPARAVEIS = ["body_battery", "sono_h", "sono_score", "fc_repouso", "steps", "estresse"]
+CAMPOS_COMPARAVEIS = ["body_battery", "sono_h", "sono_score", "fc_repouso", "steps", "estresse", "calorias_total"]
 ontem_snapshot = None
 if _dados_anteriores:
     if _dados_anteriores.get("hoje") != today:
@@ -376,6 +375,7 @@ if ontem_snapshot:
         _comparar_metrica("FC repouso", fc_repouso, ontem_snapshot.get("fc_repouso"), " bpm", pior_se_maior=True),
         _comparar_metrica("Passos", steps, ontem_snapshot.get("steps")),
         _comparar_metrica("Estresse", estresse, ontem_snapshot.get("estresse"), pior_se_maior=True),
+        _comparar_metrica("Calorias totais", calorias_total, ontem_snapshot.get("calorias_total"), " kcal"),
     ]
     linhas = [l for l in linhas if l]
     analise_diaria = "\n".join(linhas) if linhas else "Ainda não há dados suficientes de ontem para comparar."
@@ -440,6 +440,7 @@ Cardio (esteira/escada): {"✅ feito" if cardio_feito else "❌ ainda não regis
 🫁 SpO2 mínimo: {spo2_min}% — {_spo2_msg}
 📊 Estresse médio: {estresse}/100
 🔋 HRV: {hrv_val} ({hrv_status})
+🔥 Calorias: {calorias_total} total ({calorias_ativas} em exercício + {calorias_repouso} em repouso)
 
 Orientação automática: {orientacao_titulo} — {orientacao_texto}"""
 
@@ -467,7 +468,9 @@ data = {
     "spo2_feedback_msg": spo2_feedback(spo2_min if spo2_min != "--" else 95)[1],
     "hrv_val": hrv_val,
     "hrv_status": hrv_status,
-    "calorias": calorias,
+    "calorias_total": calorias_total,
+    "calorias_ativas": calorias_ativas,
+    "calorias_repouso": calorias_repouso,
     "sono_h": sono_h,
     "sono_score": sono_score,
     "sono_qualidade": sono_qualidade,

@@ -702,7 +702,7 @@
       </div>
     </div>
 
-    <div class="grid grid-3" style="margin-bottom:14px;">
+    <div class="grid grid-4" style="margin-bottom:14px;">
       <div class="card yellow">
         <div class="card-label">Saturação O₂ Mínima</div>
         <div class="card-value" id="val-spo2">–<span class="card-unit">%</span></div>
@@ -718,6 +718,11 @@
         <div class="card-label">Estresse</div>
         <div class="card-value" id="val-estresse">–<span class="card-unit">/100</span></div>
         <div class="card-sub">Médio do dia</div>
+      </div>
+      <div class="card orange">
+        <div class="card-label">Calorias</div>
+        <div class="card-value" id="val-calorias">–<span class="card-unit">kcal</span></div>
+        <div class="card-sub" id="sub-calorias">–</div>
       </div>
     </div>
 
@@ -1328,6 +1333,9 @@
     set('val-hrv', G.hrv_val);
     set('sub-hrv', 'Status: ' + G.hrv_status);
     set('val-estresse', G.estresse);
+
+    set('val-calorias', G.calorias_total);
+    set('sub-calorias', G.calorias_ativas + ' exercício · ' + G.calorias_repouso + ' repouso');
 
     // Barras
     setBar('bar-steps', G.steps_pct, 'var(--orange)');
