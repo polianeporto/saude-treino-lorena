@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "29/07/2026 às 15:52h",
+  "atualizado": "29/07/2026 às 17:06h",
   "hoje": "2026-07-29",
   "body_battery": 29,
   "bb_max": 81,
@@ -47,8 +47,8 @@ const GARMIN = {
   "minutos_ativos_hoje": 109,
   "alerta_treino": "",
   "alerta_treino_urgente": false,
-  "hora_brasilia": 15,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (29/07/2026 às 15:52h)\n\n🏋️ Treino do dia: Treino C — MMII Glúteo e posterior\nMusculação: ✅ feita\nCardio (esteira/escada): ✅ feito — 109 min de atividade hoje\n\n⚡ Body Battery: 29/100 — ⚠️ Baixo — treino leve\n😴 Sono: 6.6h · score 84 — ✅ Sono bom\n❤️ FC repouso: 56 bpm — ✅ Excelente\n🚶 Passos: 7177/8460 (85%) — ⚡ Bom progresso\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 28/100\n🔋 HRV: 47 (NONE)\n🔥 Calorias: 1531.0 total (446.0 em exercício + 1085.0 em repouso)\n\nOrientação automática: Treino moderado — sem forçar — Sinais de recuperação incompleta. Musculação com carga reduzida · Cardio zona 2 · Sem corrida forte hoje.",
+  "hora_brasilia": 17,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (29/07/2026 às 17:06h)\n\n🏋️ Treino do dia: Treino C — MMII Glúteo e posterior\nMusculação: ✅ feita\nCardio (esteira/escada): ✅ feito — 109 min de atividade hoje\n\n⚡ Body Battery: 29/100 — ⚠️ Baixo — treino leve\n😴 Sono: 6.6h · score 84 — ✅ Sono bom\n❤️ FC repouso: 56 bpm — ✅ Excelente\n🚶 Passos: 7177/8460 (85%) — ⚡ Bom progresso\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 28/100\n🔋 HRV: 47 (NONE)\n🔥 Calorias: 1531.0 total (446.0 em exercício + 1085.0 em repouso)\n\nOrientação automática: Treino moderado — sem forçar — Sinais de recuperação incompleta. Musculação com carga reduzida · Cardio zona 2 · Sem corrida forte hoje.",
   "workout_agendado_data": "2026-07-29",
   "analise_diaria": "• Body Battery: 📉 de 46 para 29 (piorou em relação a ontem)\n• Sono: 📈 de 3.3 para 6.6h (melhorou em relação a ontem)\n• Score do sono: 📈 de 46 para 84 (melhorou em relação a ontem)\n• FC repouso: 📉 de 57 para 56 bpm (melhorou em relação a ontem)\n• Passos: 📈 de 7.902 para 7177 (melhorou em relação a ontem)\n• Estresse: 📈 de 16 para 28 (piorou em relação a ontem)\n• Calorias totais: 📉 de 1976.0 para 1531.0 kcal (piorou em relação a ontem)",
   "ontem_snapshot": {
