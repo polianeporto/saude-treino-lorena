@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "06/08/2026 às 04:31h",
+  "atualizado": "06/08/2026 às 07:24h",
   "hoje": "2026-08-06",
   "body_battery": "--",
   "bb_max": "--",
@@ -19,8 +19,8 @@ const GARMIN = {
   "spo2_media": "--",
   "spo2_feedback_cor": "green",
   "spo2_feedback_msg": "✅ Normal",
-  "hrv_val": "--",
-  "hrv_status": "--",
+  "hrv_val": 44,
+  "hrv_status": "NONE",
   "calorias_total": "--",
   "calorias_ativas": "--",
   "calorias_repouso": "--",
@@ -47,8 +47,8 @@ const GARMIN = {
   "minutos_ativos_hoje": 0,
   "alerta_treino": "",
   "alerta_treino_urgente": false,
-  "hora_brasilia": 4,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (06/08/2026 às 04:31h)\n\n🏋️ Treino do dia: Treino B — MMSS Superior completo\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: --/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 0/9000 (0%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: --/100\n🔋 HRV: -- (--)\n🔥 Calorias: -- total (-- em exercício + -- em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
+  "hora_brasilia": 7,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (06/08/2026 às 07:24h)\n\n🏋️ Treino do dia: Treino B — MMSS Superior completo\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: --/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 0/9000 (0%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: --/100\n🔋 HRV: 44 (NONE)\n🔥 Calorias: -- total (-- em exercício + -- em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
   "workout_agendado_data": "2026-08-06",
   "analise_diaria": "• Sono: 📉 de 6.5 para 0.0h (piorou em relação a ontem)\n• Passos: 📉 de 4.188 para 0 (piorou em relação a ontem)",
   "ontem_snapshot": {
