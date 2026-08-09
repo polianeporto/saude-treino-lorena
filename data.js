@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "09/08/2026 às 05:28h",
+  "atualizado": "09/08/2026 às 06:27h",
   "hoje": "2026-08-09",
   "body_battery": 18,
   "bb_max": 18,
@@ -47,8 +47,8 @@ const GARMIN = {
   "minutos_ativos_hoje": 0,
   "alerta_treino": "",
   "alerta_treino_urgente": false,
-  "hora_brasilia": 5,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (09/08/2026 às 05:28h)\n\n🏋️ Treino do dia: Descanso — só cardio\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 18/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 65 bpm — ✅ Saudável\n🚶 Passos: 213/9370 (2%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: 89% — ⚠️ Abaixo de 90% — atenção\n📊 Estresse médio: 37/100\n🔋 HRV: -- (--)\n🔥 Calorias: 288.0 total (18.0 em exercício + 270.0 em repouso)\n\nOrientação automática: Dia de descanso ativo — Body Battery ou sono muito baixos. Bike leve 20–30 min · FC abaixo de 120 · Sem musculação pesada hoje.",
+  "hora_brasilia": 6,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (09/08/2026 às 06:27h)\n\n🏋️ Treino do dia: Descanso — só cardio\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 18/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 65 bpm — ✅ Saudável\n🚶 Passos: 213/9370 (2%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: 89% — ⚠️ Abaixo de 90% — atenção\n📊 Estresse médio: 37/100\n🔋 HRV: -- (--)\n🔥 Calorias: 288.0 total (18.0 em exercício + 270.0 em repouso)\n\nOrientação automática: Dia de descanso ativo — Body Battery ou sono muito baixos. Bike leve 20–30 min · FC abaixo de 120 · Sem musculação pesada hoje.",
   "workout_agendado_data": "2026-08-07",
   "analise_diaria": "• Body Battery: 📈 de 5 para 18 (melhorou em relação a ontem)\n• Sono: 📉 de 8.7 para 0.0h (piorou em relação a ontem)\n• FC repouso: 📈 de 62 para 65 bpm (piorou em relação a ontem)\n• Passos: 📈 de 12.646 para 213 (melhorou em relação a ontem)\n• Estresse: 📉 de 45 para 37 (melhorou em relação a ontem)\n• Calorias totais: 📉 de 2658.0 para 288.0 kcal (piorou em relação a ontem)",
   "ontem_snapshot": {
