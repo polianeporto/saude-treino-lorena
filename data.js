@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "20/08/2026 às 21:35h",
+  "atualizado": "20/08/2026 às 23:16h",
   "hoje": "2026-08-20",
   "body_battery": 16,
   "bb_max": 40,
@@ -47,8 +47,8 @@ const GARMIN = {
   "minutos_ativos_hoje": 43,
   "alerta_treino": "",
   "alerta_treino_urgente": false,
-  "hora_brasilia": 21,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (20/08/2026 às 21:35h)\n\n🏋️ Treino do dia: Treino B — MMSS Superior completo\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado — 43 min de atividade hoje\n\n⚡ Body Battery: 16/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 6.9h · score 50 — ⚡ Sono regular — atenção à intensidade\n❤️ FC repouso: 66 bpm — ✅ Saudável\n🚶 Passos: 12642/8340 (152%) — ✅ Meta batida!\n🫁 SpO2 mínimo: 83% — 🔴 Crítico — investigar\n📊 Estresse médio: 50/100\n🔋 HRV: 29 (LOW)\n🔥 Calorias: 2183.0 total (764.0 em exercício + 1419.0 em repouso)\n\nOrientação automática: Dia de descanso ativo — Body Battery ou sono muito baixos. Bike leve 20–30 min · FC abaixo de 120 · Sem musculação pesada hoje.",
+  "hora_brasilia": 23,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (20/08/2026 às 23:16h)\n\n🏋️ Treino do dia: Treino B — MMSS Superior completo\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado — 43 min de atividade hoje\n\n⚡ Body Battery: 16/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 6.9h · score 50 — ⚡ Sono regular — atenção à intensidade\n❤️ FC repouso: 66 bpm — ✅ Saudável\n🚶 Passos: 12642/8340 (152%) — ✅ Meta batida!\n🫁 SpO2 mínimo: 83% — 🔴 Crítico — investigar\n📊 Estresse médio: 50/100\n🔋 HRV: 29 (LOW)\n🔥 Calorias: 2183.0 total (764.0 em exercício + 1419.0 em repouso)\n\nOrientação automática: Dia de descanso ativo — Body Battery ou sono muito baixos. Bike leve 20–30 min · FC abaixo de 120 · Sem musculação pesada hoje.",
   "workout_agendado_data": "2026-08-20",
   "analise_diaria": "• Body Battery: 📈 de 5 para 16 (melhorou em relação a ontem)\n• Sono: 📈 de 0.0 para 6.9h (melhorou em relação a ontem)\n• FC repouso: 📈 de 65 para 66 bpm (piorou em relação a ontem)\n• Passos: 📈 de 14.105 para 12642 (melhorou em relação a ontem)\n• Estresse: 📈 de 48 para 50 (piorou em relação a ontem)\n• Calorias totais: 📈 de 2012.0 para 2183.0 kcal (melhorou em relação a ontem)",
   "ontem_snapshot": {
