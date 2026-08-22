@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "22/08/2026 às 08:10h",
+  "atualizado": "22/08/2026 às 09:15h",
   "hoje": "2026-08-22",
   "body_battery": 5,
   "bb_max": 5,
@@ -19,8 +19,8 @@ const GARMIN = {
   "spo2_media": 96.0,
   "spo2_feedback_cor": "red",
   "spo2_feedback_msg": "🔴 Crítico — investigar",
-  "hrv_val": "--",
-  "hrv_status": "--",
+  "hrv_val": 34,
+  "hrv_status": "LOW",
   "calorias_total": 209.0,
   "calorias_ativas": 28.0,
   "calorias_repouso": 181.0,
@@ -47,8 +47,8 @@ const GARMIN = {
   "minutos_ativos_hoje": 0,
   "alerta_treino": "",
   "alerta_treino_urgente": false,
-  "hora_brasilia": 8,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (22/08/2026 às 08:10h)\n\n🏋️ Treino do dia: Descanso — só cardio\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 5/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 69 bpm — ✅ Saudável\n🚶 Passos: 156/9210 (2%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: 85% — 🔴 Crítico — investigar\n📊 Estresse médio: 58/100\n🔋 HRV: -- (--)\n🔥 Calorias: 209.0 total (28.0 em exercício + 181.0 em repouso)\n\nOrientação automática: Dia de descanso ativo — Body Battery ou sono muito baixos. Bike leve 20–30 min · FC abaixo de 120 · Sem musculação pesada hoje.",
+  "hora_brasilia": 9,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (22/08/2026 às 09:15h)\n\n🏋️ Treino do dia: Descanso — só cardio\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 5/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 69 bpm — ✅ Saudável\n🚶 Passos: 156/9210 (2%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: 85% — 🔴 Crítico — investigar\n📊 Estresse médio: 58/100\n🔋 HRV: 34 (LOW)\n🔥 Calorias: 209.0 total (28.0 em exercício + 181.0 em repouso)\n\nOrientação automática: Dia de descanso ativo — Body Battery ou sono muito baixos. Bike leve 20–30 min · FC abaixo de 120 · Sem musculação pesada hoje.",
   "workout_agendado_data": "2026-08-21",
   "analise_diaria": "• Body Battery: 📉 de 17 para 5 (piorou em relação a ontem)\n• Sono: 📉 de 6.7 para 0.0h (piorou em relação a ontem)\n• FC repouso: 📈 de 67 para 69 bpm (piorou em relação a ontem)\n• Passos: 📈 de 2.982 para 156 (melhorou em relação a ontem)\n• Estresse: 📈 de 51 para 58 (piorou em relação a ontem)\n• Calorias totais: 📉 de 1170.0 para 209.0 kcal (piorou em relação a ontem)",
   "ontem_snapshot": {
