@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "24/08/2026 às 08:16h",
+  "atualizado": "24/08/2026 às 09:22h",
   "hoje": "2026-08-24",
   "body_battery": 84,
   "bb_max": 89,
@@ -47,8 +47,8 @@ const GARMIN = {
   "minutos_ativos_hoje": 0,
   "alerta_treino": "",
   "alerta_treino_urgente": false,
-  "hora_brasilia": 8,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (24/08/2026 às 08:16h)\n\n🏋️ Treino do dia: Treino A — MMII Coxa completa\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 84/100 — ✅ Bom — pode treinar\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 172/8740 (2%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 55/100\n🔋 HRV: -- (--)\n🔥 Calorias: 587.0 total (12.0 em exercício + 575.0 em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
+  "hora_brasilia": 9,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (24/08/2026 às 09:22h)\n\n🏋️ Treino do dia: Treino A — MMII Coxa completa\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 84/100 — ✅ Bom — pode treinar\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 172/8740 (2%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 55/100\n🔋 HRV: -- (--)\n🔥 Calorias: 587.0 total (12.0 em exercício + 575.0 em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
   "workout_agendado_data": "2026-08-24",
   "analise_diaria": "• Body Battery: 📈 de 26 para 84 (melhorou em relação a ontem)\n• Sono: 📉 de 6.5 para 0.0h (piorou em relação a ontem)\n• Passos: 📈 de 14.396 para 172 (melhorou em relação a ontem)\n• Estresse: 📈 de 31 para 55 (piorou em relação a ontem)\n• Calorias totais: 📉 de 1946.0 para 587.0 kcal (piorou em relação a ontem)",
   "ontem_snapshot": {
