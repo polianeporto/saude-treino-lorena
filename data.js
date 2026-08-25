@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "25/08/2026 às 04:34h",
+  "atualizado": "25/08/2026 às 05:28h",
   "hoje": "2026-08-25",
   "body_battery": "--",
   "bb_max": "--",
@@ -47,8 +47,8 @@ const GARMIN = {
   "minutos_ativos_hoje": 0,
   "alerta_treino": "",
   "alerta_treino_urgente": false,
-  "hora_brasilia": 4,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (25/08/2026 às 04:34h)\n\n🏋️ Treino do dia: Treino B — MMSS Superior completo\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: --/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 0/8740 (0%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: -1/100\n🔋 HRV: -- (LOW)\n🔥 Calorias: 94.0 total (0.0 em exercício + 94.0 em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
+  "hora_brasilia": 5,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (25/08/2026 às 05:28h)\n\n🏋️ Treino do dia: Treino B — MMSS Superior completo\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: --/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 0/8740 (0%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: -1/100\n🔋 HRV: -- (LOW)\n🔥 Calorias: 94.0 total (0.0 em exercício + 94.0 em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
   "workout_agendado_data": "2026-08-25",
   "analise_diaria": "• Sono: estável em 0.0h\n• Passos: 📉 de 1.141 para 0 (piorou em relação a ontem)\n• Estresse: 📉 de 62 para -1 (melhorou em relação a ontem)\n• Calorias totais: 📉 de 806.0 para 94.0 kcal (piorou em relação a ontem)",
   "ontem_snapshot": {
