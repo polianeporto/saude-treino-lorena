@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "30/08/2026 às 03:01h",
+  "atualizado": "30/08/2026 às 09:22h",
   "hoje": "2026-08-30",
   "body_battery": "--",
   "bb_max": "--",
@@ -47,8 +47,8 @@ const GARMIN = {
   "minutos_ativos_hoje": 0,
   "alerta_treino": "",
   "alerta_treino_urgente": false,
-  "hora_brasilia": 3,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (30/08/2026 às 03:01h)\n\n🏋️ Treino do dia: Descanso — só cardio\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: --/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 0/9000 (0%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: --/100\n🔋 HRV: -- (--)\n🔥 Calorias: -- total (-- em exercício + -- em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
+  "hora_brasilia": 9,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (30/08/2026 às 09:22h)\n\n🏋️ Treino do dia: Descanso — só cardio\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: --/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 0/9000 (0%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: --/100\n🔋 HRV: -- (--)\n🔥 Calorias: -- total (-- em exercício + -- em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
   "workout_agendado_data": "2026-08-28",
   "analise_diaria": "• Sono: estável em 0.0h\n• Passos: estável em 0",
   "ontem_snapshot": {
