@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "30/08/2026 às 14:01h",
+  "atualizado": "30/08/2026 às 17:12h",
   "hoje": "2026-08-30",
   "body_battery": "--",
   "bb_max": "--",
@@ -45,10 +45,10 @@ const GARMIN = {
   "cardio_feito": false,
   "musculacao_feita": false,
   "minutos_ativos_hoje": 0,
-  "alerta_treino": "",
+  "alerta_treino": "Ainda não fez o cardio de hoje (60 min esteira/escada)! Vai lá 💪",
   "alerta_treino_urgente": false,
-  "hora_brasilia": 14,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (30/08/2026 às 14:01h)\n\n🏋️ Treino do dia: Descanso — só cardio\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: --/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 0/9730 (0%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: -1/100\n🔋 HRV: -- (--)\n🔥 Calorias: 807.0 total (0.0 em exercício + 807.0 em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
+  "hora_brasilia": 17,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (30/08/2026 às 17:12h)\n\n🏋️ Treino do dia: Descanso — só cardio\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: --/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 0/9730 (0%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: -1/100\n🔋 HRV: -- (--)\n🔥 Calorias: 807.0 total (0.0 em exercício + 807.0 em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
   "workout_agendado_data": "2026-08-28",
   "analise_diaria": "• Sono: estável em 0.0h\n• Passos: estável em 0\n• Estresse: estável em -1\n• Calorias totais: 📈 de 799.0 para 807.0 kcal (melhorou em relação a ontem)",
   "ontem_snapshot": {
