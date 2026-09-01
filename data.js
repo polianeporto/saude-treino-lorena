@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "01/09/2026 às 18:31h",
+  "atualizado": "01/09/2026 às 20:38h",
   "hoje": "2026-09-01",
   "body_battery": 29,
   "bb_max": 39,
@@ -46,9 +46,9 @@ const GARMIN = {
   "musculacao_feita": false,
   "minutos_ativos_hoje": 0,
   "alerta_treino": "Treino de hoje: Treino B — MMSS Superior completo. Você ainda não registrou nenhuma atividade. Vai treinar hoje?",
-  "alerta_treino_urgente": false,
-  "hora_brasilia": 18,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (01/09/2026 às 18:31h)\n\n🏋️ Treino do dia: Treino B — MMSS Superior completo\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 29/100 — ⚠️ Baixo — treino leve\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 72 bpm — ⚡ Atenção\n🚶 Passos: 645/9730 (7%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 72/100\n🔋 HRV: -- (--)\n🔥 Calorias: 1055.0 total (31.0 em exercício + 1024.0 em repouso)\n\nOrientação automática: Treino moderado — sem forçar — Sinais de recuperação incompleta. Musculação com carga reduzida · Cardio zona 2 · Sem corrida forte hoje.",
+  "alerta_treino_urgente": true,
+  "hora_brasilia": 20,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (01/09/2026 às 20:38h)\n\n🏋️ Treino do dia: Treino B — MMSS Superior completo\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 29/100 — ⚠️ Baixo — treino leve\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 72 bpm — ⚡ Atenção\n🚶 Passos: 645/9730 (7%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 72/100\n🔋 HRV: -- (--)\n🔥 Calorias: 1055.0 total (31.0 em exercício + 1024.0 em repouso)\n\nOrientação automática: Treino moderado — sem forçar — Sinais de recuperação incompleta. Musculação com carga reduzida · Cardio zona 2 · Sem corrida forte hoje.",
   "workout_agendado_data": "2026-09-01",
   "analise_diaria": "• Sono: estável em 0.0h\n• Passos: 📈 de 0 para 645 (melhorou em relação a ontem)",
   "ontem_snapshot": {
