@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "21/09/2026 às 12:25h",
+  "atualizado": "21/09/2026 às 17:10h",
   "hoje": "2026-09-21",
   "body_battery": "--",
   "bb_max": "--",
@@ -45,10 +45,10 @@ const GARMIN = {
   "cardio_feito": false,
   "musculacao_feita": false,
   "minutos_ativos_hoje": 0,
-  "alerta_treino": "",
+  "alerta_treino": "Treino de hoje: Treino A — MMII Coxa completa. Você ainda não registrou nenhuma atividade. Vai treinar hoje?",
   "alerta_treino_urgente": false,
-  "hora_brasilia": 12,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (21/09/2026 às 12:25h)\n\n🏋️ Treino do dia: Treino A — MMII Coxa completa\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: --/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 0/9000 (0%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: --/100\n🔋 HRV: -- (--)\n🔥 Calorias: -- total (-- em exercício + -- em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
+  "hora_brasilia": 17,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (21/09/2026 às 17:10h)\n\n🏋️ Treino do dia: Treino A — MMII Coxa completa\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: --/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 0/9000 (0%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: --/100\n🔋 HRV: -- (--)\n🔥 Calorias: -- total (-- em exercício + -- em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
   "workout_agendado_data": "2026-09-21",
   "analise_diaria": "• Sono: estável em 0.0h\n• Passos: estável em 0",
   "ontem_snapshot": {
