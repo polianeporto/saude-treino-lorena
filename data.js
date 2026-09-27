@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "27/09/2026 às 11:53h",
+  "atualizado": "27/09/2026 às 15:44h",
   "hoje": "2026-09-27",
   "body_battery": "--",
   "bb_max": "--",
@@ -45,10 +45,10 @@ const GARMIN = {
   "cardio_feito": false,
   "musculacao_feita": false,
   "minutos_ativos_hoje": 0,
-  "alerta_treino": "",
+  "alerta_treino": "Ainda não fez o cardio de hoje (60 min esteira/escada)! Vai lá 💪",
   "alerta_treino_urgente": false,
-  "hora_brasilia": 11,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (27/09/2026 às 11:53h)\n\n🏋️ Treino do dia: Descanso — só cardio\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: --/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 0/9000 (0%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: --/100\n🔋 HRV: -- (--)\n🔥 Calorias: -- total (-- em exercício + -- em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
+  "hora_brasilia": 15,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (27/09/2026 às 15:44h)\n\n🏋️ Treino do dia: Descanso — só cardio\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: --/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 0/9000 (0%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: --/100\n🔋 HRV: -- (--)\n🔥 Calorias: -- total (-- em exercício + -- em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
   "workout_agendado_data": "2026-09-25",
   "analise_diaria": "• Sono: estável em 0.0h\n• Passos: 📉 de 13.831 para 0 (piorou em relação a ontem)",
   "ontem_snapshot": {
