@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "28/09/2026 às 17:54h",
+  "atualizado": "28/09/2026 às 21:42h",
   "hoje": "2026-09-28",
   "body_battery": 66,
   "bb_max": 100,
@@ -47,8 +47,8 @@ const GARMIN = {
   "minutos_ativos_hoje": 70,
   "alerta_treino": "",
   "alerta_treino_urgente": false,
-  "hora_brasilia": 17,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (28/09/2026 às 17:54h)\n\n🏋️ Treino do dia: Treino C — MMII Glúteo e posterior\nMusculação: ✅ feita\nCardio (esteira/escada): ❌ ainda não registrado — 70 min de atividade hoje\n\n⚡ Body Battery: 66/100 — ✅ Bom — pode treinar\n😴 Sono: 10.5h · score 95 — ✅ Sono excelente\n❤️ FC repouso: 51 bpm — ✅ Excelente\n🚶 Passos: 5564/10690 (52%) — ⚡ Continue se movendo\n🫁 SpO2 mínimo: 85% — 🔴 Crítico — investigar\n📊 Estresse médio: 10/100\n🔋 HRV: 66 (NONE)\n🔥 Calorias: 1539.0 total (485.0 em exercício + 1054.0 em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
+  "hora_brasilia": 21,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (28/09/2026 às 21:42h)\n\n🏋️ Treino do dia: Treino C — MMII Glúteo e posterior\nMusculação: ✅ feita\nCardio (esteira/escada): ❌ ainda não registrado — 70 min de atividade hoje\n\n⚡ Body Battery: 66/100 — ✅ Bom — pode treinar\n😴 Sono: 10.5h · score 95 — ✅ Sono excelente\n❤️ FC repouso: 51 bpm — ✅ Excelente\n🚶 Passos: 5564/10690 (52%) — ⚡ Continue se movendo\n🫁 SpO2 mínimo: 85% — 🔴 Crítico — investigar\n📊 Estresse médio: 10/100\n🔋 HRV: 66 (NONE)\n🔥 Calorias: 1539.0 total (485.0 em exercício + 1054.0 em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
   "workout_agendado_data": "2026-09-28",
   "analise_diaria": "• Sono: 📈 de 0.0 para 10.5h (melhorou em relação a ontem)\n• Passos: 📈 de 0 para 5564 (melhorou em relação a ontem)\n• Estresse: 📈 de -1 para 10 (piorou em relação a ontem)\n• Calorias totais: 📈 de 1472.0 para 1539.0 kcal (melhorou em relação a ontem)",
   "ontem_snapshot": {
