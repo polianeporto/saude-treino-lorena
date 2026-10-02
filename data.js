@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "02/10/2026 às 04:40h",
+  "atualizado": "02/10/2026 às 11:15h",
   "hoje": "2026-10-02",
   "body_battery": "--",
   "bb_max": "--",
@@ -20,7 +20,7 @@ const GARMIN = {
   "spo2_feedback_cor": "green",
   "spo2_feedback_msg": "✅ Normal",
   "hrv_val": "--",
-  "hrv_status": "--",
+  "hrv_status": "BALANCED",
   "calorias_total": 212.0,
   "calorias_ativas": 0.0,
   "calorias_repouso": 212.0,
@@ -47,8 +47,8 @@ const GARMIN = {
   "minutos_ativos_hoje": 0,
   "alerta_treino": "",
   "alerta_treino_urgente": false,
-  "hora_brasilia": 4,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (02/10/2026 às 04:40h)\n\n🏋️ Treino do dia: Treino C — MMII Glúteo e posterior\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: --/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 0/8470 (0%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: -1/100\n🔋 HRV: -- (--)\n🔥 Calorias: 212.0 total (0.0 em exercício + 212.0 em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
+  "hora_brasilia": 11,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (02/10/2026 às 11:15h)\n\n🏋️ Treino do dia: Treino C — MMII Glúteo e posterior\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: --/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: -- bpm — ⚡ Atenção\n🚶 Passos: 0/8470 (0%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: -1/100\n🔋 HRV: -- (BALANCED)\n🔥 Calorias: 212.0 total (0.0 em exercício + 212.0 em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
   "workout_agendado_data": "2026-10-02",
   "analise_diaria": "• Sono: 📉 de 8.2 para 0.0h (piorou em relação a ontem)\n• Passos: 📉 de 7.363 para 0 (piorou em relação a ontem)\n• Estresse: 📉 de 22 para -1 (melhorou em relação a ontem)\n• Calorias totais: 📉 de 1894.0 para 212.0 kcal (piorou em relação a ontem)",
   "ontem_snapshot": {
