@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "12/10/2026 às 13:14h",
+  "atualizado": "12/10/2026 às 20:18h",
   "hoje": "2026-10-12",
   "body_battery": 5,
   "bb_max": 32,
@@ -45,10 +45,10 @@ const GARMIN = {
   "cardio_feito": false,
   "musculacao_feita": false,
   "minutos_ativos_hoje": 0,
-  "alerta_treino": "",
-  "alerta_treino_urgente": false,
-  "hora_brasilia": 13,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (12/10/2026 às 13:14h)\n\n🏋️ Treino do dia: Treino C — MMII Glúteo e posterior\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 5/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 64 bpm — ✅ Saudável\n🚶 Passos: 7497/5010 (150%) — ✅ Meta batida!\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 72/100\n🔋 HRV: -- (--)\n🔥 Calorias: 937.0 total (433.0 em exercício + 504.0 em repouso)\n\nOrientação automática: Dia de descanso ativo — Body Battery ou sono muito baixos. Bike leve 20–30 min · FC abaixo de 120 · Sem musculação pesada hoje.",
+  "alerta_treino": "Treino de hoje: Treino C — MMII Glúteo e posterior. Você ainda não registrou nenhuma atividade. Vai treinar hoje?",
+  "alerta_treino_urgente": true,
+  "hora_brasilia": 20,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (12/10/2026 às 20:18h)\n\n🏋️ Treino do dia: Treino C — MMII Glúteo e posterior\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 5/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 64 bpm — ✅ Saudável\n🚶 Passos: 7497/5010 (150%) — ✅ Meta batida!\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 72/100\n🔋 HRV: -- (--)\n🔥 Calorias: 937.0 total (433.0 em exercício + 504.0 em repouso)\n\nOrientação automática: Dia de descanso ativo — Body Battery ou sono muito baixos. Bike leve 20–30 min · FC abaixo de 120 · Sem musculação pesada hoje.",
   "workout_agendado_data": "2026-10-12",
   "analise_diaria": "• Body Battery: 📉 de 50 para 5 (piorou em relação a ontem)\n• Sono: estável em 0.0h\n• Passos: 📈 de 69 para 7497 (melhorou em relação a ontem)\n• Estresse: 📉 de 92 para 72 (melhorou em relação a ontem)\n• Calorias totais: 📉 de 1372.0 para 937.0 kcal (piorou em relação a ontem)",
   "ontem_snapshot": {
