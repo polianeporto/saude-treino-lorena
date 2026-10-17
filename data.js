@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "17/10/2026 às 18:49h",
+  "atualizado": "17/10/2026 às 20:35h",
   "hoje": "2026-10-17",
   "body_battery": 5,
   "bb_max": 5,
@@ -46,9 +46,9 @@ const GARMIN = {
   "musculacao_feita": false,
   "minutos_ativos_hoje": 0,
   "alerta_treino": "Ainda não fez o cardio de hoje (60 min esteira/escada)! Vai lá 💪",
-  "alerta_treino_urgente": false,
-  "hora_brasilia": 18,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (17/10/2026 às 18:49h)\n\n🏋️ Treino do dia: Descanso — só cardio\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 5/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 67 bpm — ✅ Saudável\n🚶 Passos: 5840/5260 (111%) — ✅ Meta batida!\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 83/100\n🔋 HRV: -- (--)\n🔥 Calorias: 2157.0 total (884.0 em exercício + 1273.0 em repouso)\n\nOrientação automática: Dia de descanso ativo — Body Battery ou sono muito baixos. Bike leve 20–30 min · FC abaixo de 120 · Sem musculação pesada hoje.",
+  "alerta_treino_urgente": true,
+  "hora_brasilia": 20,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (17/10/2026 às 20:35h)\n\n🏋️ Treino do dia: Descanso — só cardio\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 5/100 — 🔴 Crítico — só recuperação hoje\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 67 bpm — ✅ Saudável\n🚶 Passos: 5840/5260 (111%) — ✅ Meta batida!\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 83/100\n🔋 HRV: -- (--)\n🔥 Calorias: 2157.0 total (884.0 em exercício + 1273.0 em repouso)\n\nOrientação automática: Dia de descanso ativo — Body Battery ou sono muito baixos. Bike leve 20–30 min · FC abaixo de 120 · Sem musculação pesada hoje.",
   "workout_agendado_data": "2026-10-16",
   "analise_diaria": "• Body Battery: estável em 5\n• Sono: 📉 de 4.6 para 0.0h (piorou em relação a ontem)\n• FC repouso: 📈 de 63 para 67 bpm (piorou em relação a ontem)\n• Passos: 📈 de 4.999 para 5840 (melhorou em relação a ontem)\n• Estresse: 📈 de 59 para 83 (piorou em relação a ontem)\n• Calorias totais: 📉 de 2428.0 para 2157.0 kcal (piorou em relação a ontem)",
   "ontem_snapshot": {
