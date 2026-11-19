@@ -1,5 +1,5 @@
 const GARMIN = {
-  "atualizado": "18/11/2026 às 17:57h",
+  "atualizado": "18/11/2026 às 23:11h",
   "hoje": "2026-11-18",
   "body_battery": 67,
   "bb_max": 67,
@@ -46,9 +46,9 @@ const GARMIN = {
   "musculacao_feita": false,
   "minutos_ativos_hoje": 0,
   "alerta_treino": "Treino de hoje: Treino C — MMII Glúteo e posterior. Você ainda não registrou nenhuma atividade. Vai treinar hoje?",
-  "alerta_treino_urgente": false,
-  "hora_brasilia": 17,
-  "resumo_personal": "📋 Resumo diário — Lorena Almeida (18/11/2026 às 17:57h)\n\n🏋️ Treino do dia: Treino C — MMII Glúteo e posterior\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 67/100 — ✅ Bom — pode treinar\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 67 bpm — ✅ Saudável\n🚶 Passos: 1384/6640 (21%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 30/100\n🔋 HRV: 41 (UNBALANCED)\n🔥 Calorias: 840.0 total (189.0 em exercício + 651.0 em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
+  "alerta_treino_urgente": true,
+  "hora_brasilia": 23,
+  "resumo_personal": "📋 Resumo diário — Lorena Almeida (18/11/2026 às 23:11h)\n\n🏋️ Treino do dia: Treino C — MMII Glúteo e posterior\nMusculação: ❌ ainda não registrada\nCardio (esteira/escada): ❌ ainda não registrado\n\n⚡ Body Battery: 67/100 — ✅ Bom — pode treinar\n😴 Sono: 0.0h · score -- — ⚠️ Sono ruim — priorize recuperação\n❤️ FC repouso: 67 bpm — ✅ Saudável\n🚶 Passos: 1384/6640 (21%) — ⚠️ Muito parada hoje\n🫁 SpO2 mínimo: --% — ✅ Normal\n📊 Estresse médio: 30/100\n🔋 HRV: 41 (UNBALANCED)\n🔥 Calorias: 840.0 total (189.0 em exercício + 651.0 em repouso)\n\nOrientação automática: Pode treinar! Siga a ficha do dia. — Body Battery e sono em bom nível. Siga a ficha semanal normalmente. Monitore a FC durante o treino.",
   "workout_agendado_data": "2026-11-18",
   "analise_diaria": "• Body Battery: 📈 de 58 para 67 (melhorou em relação a ontem)\n• Sono: 📉 de 8.3 para 0.0h (piorou em relação a ontem)\n• FC repouso: 📈 de 63 para 67 bpm (piorou em relação a ontem)\n• Passos: 📈 de 6.984 para 1384 (melhorou em relação a ontem)\n• Estresse: 📈 de 20 para 30 (piorou em relação a ontem)\n• Calorias totais: 📉 de 1814.0 para 840.0 kcal (piorou em relação a ontem)",
   "ontem_snapshot": {
